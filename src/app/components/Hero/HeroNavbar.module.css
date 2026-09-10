@@ -1,0 +1,246 @@
+/* ==========================================================
+   HeroNavbar — Floating Liquid Glass Navigation Bar
+   ========================================================== */
+
+.navHeader {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2.5rem);
+  max-width: 1360px;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+              0 16px 40px -10px rgba(0, 0, 0, 0.85),
+              0 0 24px rgba(56, 189, 248, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navContainer:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
+              0 18px 45px -10px rgba(0, 0, 0, 0.9),
+              0 0 28px rgba(56, 189, 248, 0.2);
+}
+
+/* Brand Emblem & Typography */
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  group: true;
+}
+
+.brandEmblemWrapper {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: rgba(10, 24, 48, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.brandLink:hover .brandEmblemWrapper {
+  transform: scale(1.05);
+  border-color: var(--color-cyan-glow);
+}
+
+.brandEmblemIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--color-cyan-glow);
+}
+
+.brandPingRing {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  animation: beaconPing 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.brandTextGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandTitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #e0f2fe;
+  line-height: 1.1;
+}
+
+.brandSubtitle {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: rgba(56, 189, 248, 0.75);
+  text-transform: uppercase;
+  margin-top: 0.1rem;
+}
+
+/* Navigation Links (Desktop) */
+.navLinksList {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  background: rgba(8, 18, 38, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+}
+
+@media (min-width: 900px) {
+  .navLinksList {
+    display: flex;
+  }
+}
+
+.navLink {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #e0f2fe;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.navLinkActive {
+  color: #030712;
+  font-weight: 700;
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+}
+
+/* Actions Group */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusIndicator {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(8, 20, 40, 0.75);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #6ee7b7;
+  letter-spacing: 0.08em;
+}
+
+@media (min-width: 640px) {
+  .statusIndicator {
+    display: inline-flex;
+  }
+}
+
+.statusBeaconDot {
+  position: relative;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: var(--color-emerald-pulse);
+  box-shadow: 0 0 8px var(--color-emerald-pulse);
+}
+
+.statusBeaconPing {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: var(--color-emerald-pulse);
+  animation: beaconPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.navCtaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 60%, #0284c7 100%);
+  color: #030712;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  box-shadow: var(--glass-glow-cta);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.navCtaButton:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glass-glow-cta-hover);
+}
+
+.navCtaArrow {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.navCtaButton:hover .navCtaArrow {
+  transform: translateX(2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .navHeader {
+    top: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+
+  .navContainer {
+    padding: 0.5rem 0.85rem;
+  }
+
+  .brandTitle {
+    font-size: 0.95rem;
+  }
+
+  .brandSubtitle {
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+  }
+
+  .navCtaButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.72rem;
+  }
+}

@@ -1,0 +1,169 @@
+/* ==========================================================
+   HeroVisual — Tactical Visual Interface Layer over Earth
+   ========================================================== */
+
+.visualContainer {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+/* Sentinel-1 Radar Telemetry Badge */
+.radarBadge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.75rem;
+  background: var(--glass-bg-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6),
+              0 0 16px rgba(56, 189, 248, 0.1);
+  width: fit-content;
+  user-select: none;
+  transition: border-color 0.25s ease;
+}
+
+.radarBadge:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.radarReticle {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.radarSweepLine {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border-top: 2px solid var(--color-cyan-bright);
+  animation: radarSweep 6s linear infinite;
+}
+
+.radarCenterDot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: var(--color-cyan-glow);
+  box-shadow: 0 0 6px var(--color-cyan-glow);
+}
+
+.radarTextGroup {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.radarLabel {
+  font-size: 0.58rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.radarSub {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-cyan-glow);
+  letter-spacing: 0.05em;
+}
+
+/* Floating Elements Matrix */
+.floatingMatrix {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Desktop absolute arrangement */
+@media (min-width: 1024px) {
+  .visualContainer {
+    min-height: 520px;
+    height: 100%;
+  }
+
+  .floatingMatrix {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+  }
+
+  .calloutPosition {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    z-index: 10;
+  }
+
+  .cardStack {
+    position: absolute;
+    bottom: 8%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 10;
+  }
+}
+
+/* Tablet & Mobile Layout */
+@media (max-width: 1023px) {
+  .visualContainer {
+    min-height: auto;
+    margin-top: 1.5rem;
+  }
+
+  .floatingMatrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .calloutPosition {
+    grid-column: 1 / -1;
+  }
+
+  .cardStack {
+    display: contents;
+  }
+}
+
+/* Base Editorial Tag */
+.editorialTag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(186, 230, 253, 0.8);
+  letter-spacing: 0.02em;
+  user-select: none;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .editorialTag {
+    font-size: 0.82rem;
+    justify-content: center;
+  }
+}

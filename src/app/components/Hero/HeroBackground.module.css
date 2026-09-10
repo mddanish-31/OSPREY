@@ -1,0 +1,124 @@
+/* ==========================================================
+   HeroBackground â€” Full-viewport Earth-from-space background
+   ==========================================================
+   Renders the provided Earth/Asia image as a full-bleed
+   hero background with a subtle dark-navy gradient overlay
+   for future text readability. The Earth remains clearly
+   visible and dominant.
+   ========================================================== */
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  /* GPU compositing layer for smooth rendering */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* â”€â”€ Image â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;  /* Keep Earth/India region visible */
+
+  /* Prevent unwanted stretching or quality loss */
+  image-rendering: auto;
+
+  /* GPU layer */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* â”€â”€ Subtle overlay gradient â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Very light navy/blue transparent gradient for future text
+   readability. Does NOT heavily darken the image.
+   Stronger gradient toward top-left (text/content side),
+   subtle vignette around edges. */
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Layered gradient:
+     1. Gentle left-side readability gradient (for future hero text)
+     2. Very subtle top darkening (for future navbar)
+     3. Gentle vignette around edges */
+  background:
+    /* Left content-side gradient â€” very subtle */
+    linear-gradient(
+      to right,
+      rgba(3, 7, 18, 0.45) 0%,
+      rgba(3, 7, 18, 0.20) 35%,
+      rgba(3, 7, 18, 0.05) 60%,
+      transparent 80%
+    ),
+    /* Top bar area â€” subtle darkening for future nav */
+    linear-gradient(
+      to bottom,
+      rgba(3, 7, 18, 0.35) 0%,
+      transparent 20%
+    ),
+    /* Vignette â€” very subtle edge darkening */
+    radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(3, 7, 18, 0.25) 100%
+    );
+}
+
+/* ==========================================================
+   Responsive: adjust object-position so the Earth/India
+   geography remains visually meaningful on every viewport.
+   ========================================================== */
+
+/* Tablet landscape â€” 1024Ã—768 */
+@media (max-width: 1024px) {
+  .heroImage {
+    object-position: center 55%;
+  }
+}
+
+/* Tablet portrait â€” 768Ã—1024 */
+@media (max-width: 768px) {
+  .heroImage {
+    object-position: 55% 50%;
+  }
+}
+
+/* Mobile large â€” 390Ã—844 */
+@media (max-width: 430px) {
+  .heroImage {
+    object-position: 50% 45%;
+  }
+
+  .heroOverlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(3, 7, 18, 0.50) 0%,
+        rgba(3, 7, 18, 0.15) 30%,
+        rgba(3, 7, 18, 0.05) 60%,
+        rgba(3, 7, 18, 0.30) 100%
+      ),
+      radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(3, 7, 18, 0.20) 100%
+      );
+  }
+}
+
+/* Mobile small â€” 360Ã—800 */
+@media (max-width: 360px) {
+  .heroImage {
+    object-position: 48% 42%;
+  }
+}

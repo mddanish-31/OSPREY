@@ -1,0 +1,121 @@
+/* ==========================================================
+   Hero — Full-Viewport Oceanic Intelligence Hero Container
+   ========================================================== */
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  isolation: isolate;
+  background-color: var(--color-abyss);
+}
+
+/* Atmospheric Ambient Lighting Overlays (subtle, soft cyan & deep sea glow) */
+.ambientGlowContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ambientGlowTop {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  filter: blur(100px);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.ambientGlowRight {
+  position: absolute;
+  top: 30%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.09) 0%, transparent 70%);
+  filter: blur(120px);
+}
+
+.ambientGlowLeft {
+  position: absolute;
+  bottom: 0%;
+  left: -5%;
+  width: 600px;
+  height: 500px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+  filter: blur(140px);
+}
+
+/* Fine Tactical Coordinate Grid */
+.fineGrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(to right, #38bdf8 1px, transparent 1px),
+    linear-gradient(to bottom, #38bdf8 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  pointer-events: none;
+}
+
+/* Hero Main Grid Layout */
+.heroMain {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 7.5rem 1.5rem 3.5rem 1.5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .heroMain {
+    padding: 8.5rem 2.5rem 4.5rem 2.5rem;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroMain {
+    padding: 5.5rem 1rem 2.5rem 1rem;
+  }
+
+  .heroGrid {
+    gap: 2rem;
+  }
+}
