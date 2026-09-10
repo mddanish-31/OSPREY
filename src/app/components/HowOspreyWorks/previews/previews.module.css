@@ -1,0 +1,255 @@
+/* ==========================================================
+   Previews — Data-Ready Preview Widgets for Pipeline Stages
+   ========================================================== */
+
+.previewContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 0.75rem;
+  background: rgba(6, 18, 38, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  user-select: none;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.previewLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+}
+
+.statusDot {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 4px #38bdf8;
+}
+
+.statusDotReady {
+  background: #34d399;
+  box-shadow: 0 0 4px #34d399;
+}
+
+.statusDotPending {
+  background: #fbbf24;
+  box-shadow: 0 0 4px #fbbf24;
+}
+
+/* Source Cluster Tags */
+.sourceCluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.sourceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.45rem;
+  background: rgba(14, 38, 76, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.sourceChipIcon {
+  color: #38bdf8;
+  font-size: 0.75rem;
+}
+
+/* Detection Canvas Placeholder */
+.canvasVisual {
+  position: relative;
+  height: 64px;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: radial-gradient(ellipse at 50% 50%, rgba(14, 165, 233, 0.12) 0%, rgba(4, 14, 30, 0.8) 100%);
+  border: 1px dashed rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.radarRing {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.detectionMaskSlick {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.4rem;
+  background: rgba(8, 28, 60, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Schema Grid Preview */
+.schemaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+}
+
+.schemaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.35rem;
+  background: rgba(10, 26, 52, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.schemaKey {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.schemaVal {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Vector Trajectory Matrix */
+.vectorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.vectorNode {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(14, 38, 76, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #e2e8f0;
+}
+
+.vectorArrow {
+  color: #38bdf8;
+  font-size: 0.75rem;
+}
+
+/* Matrix Tag List */
+.matrixTagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.matrixTag {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.35rem;
+  background: rgba(12, 32, 64, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #cbd5e1;
+}
+
+.matrixTagHighlight {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Dark Vessel Cross Match */
+.crossMatchBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.45rem;
+  background: rgba(14, 34, 68, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.crossMatchUnit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.unitLabel {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.unitVal {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.mismatchBadge {
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #facc15;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
