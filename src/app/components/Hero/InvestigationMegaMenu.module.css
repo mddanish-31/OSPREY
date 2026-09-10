@@ -1,0 +1,132 @@
+/* ==========================================================
+   InvestigationMegaMenu — Compact Floating Liquid Glass Panel
+   ========================================================== */
+
+.megaMenuContainer {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(880px, calc(100vw - 2rem));
+  z-index: 60;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(8, 24, 52, 0.94) 0%, rgba(4, 14, 34, 0.92) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+              0 24px 56px -10px rgba(0, 4, 15, 0.85),
+              0 0 32px rgba(56, 189, 248, 0.2);
+  padding: 1.35rem 1.6rem;
+  animation: megaMenuEntrance 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes megaMenuEntrance {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.megaMenuInner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.groupColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.groupDot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.groupTitle {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+  background: rgba(14, 38, 76, 0.6);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.itemLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  transition: color 0.2s ease;
+}
+
+.menuItem:hover .itemLabel,
+.menuItem:focus-visible .itemLabel {
+  color: #38bdf8;
+}
+
+.itemDesc {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.bottomHighlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+}
+
+@media (max-width: 900px) {
+  .megaMenuContainer {
+    display: none;
+  }
+}
