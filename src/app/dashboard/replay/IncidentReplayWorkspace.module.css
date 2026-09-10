@@ -1,0 +1,304 @@
+/* IncidentReplayWorkspace.module.css */
+
+.workspaceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0.5rem 0.25rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Header */
+.workspaceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(8, 24, 52, 0.75) 0%, rgba(4, 14, 34, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+              0 12px 36px -4px rgba(0, 4, 15, 0.6);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.workspaceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.badgeDot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.badgeNumber {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+}
+
+.badgeCategory {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.workspaceTitle {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.capabilityBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.35rem;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(14, 38, 76, 0.65);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.statusDot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.statusText {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  letter-spacing: 0.05em;
+}
+
+.stateChip {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  color: #94a3b8;
+  background: rgba(6, 18, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.45rem;
+}
+
+/* Subtitle & Dependency Chain Banner */
+.subtitleBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(6, 18, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.bannerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bannerBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bannerNotice {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.76rem;
+  color: #cbd5e1;
+}
+
+.dependencyTrack {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.25) transparent;
+}
+
+.dependencyTrack::-webkit-scrollbar {
+  height: 3px;
+}
+
+.dependencyTrack::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.25);
+  border-radius: 2px;
+}
+
+.depItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.stepBox {
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.35rem;
+  background: rgba(14, 38, 76, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.stepName {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+
+.stepArrow {
+  color: rgba(56, 189, 248, 0.4);
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+/* Action Toolbar */
+.actionBar {
+  display: flex;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(6, 18, 42, 0.65);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.actionButtonsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.45rem;
+  background: rgba(14, 38, 76, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+.primaryActionBtn {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+/* Main Canvas Grid */
+.canvasGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.25rem;
+}
+
+.mapColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.sideControlsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Scenario Grid */
+.scenarioGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .canvasGrid {
+    grid-template-columns: 1fr;
+  }
+  .scenarioGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .workspaceContainer {
+    padding: 0.25rem 0 1.5rem;
+    gap: 1rem;
+  }
+  .actionButtonsRow {
+    flex-wrap: wrap;
+  }
+}

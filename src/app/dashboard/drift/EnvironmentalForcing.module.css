@@ -1,0 +1,210 @@
+/* ==========================================================
+   EnvironmentalForcing — Side Context Panel
+   ========================================================== */
+
+.forcingCard {
+  position: relative;
+  width: 320px;
+  min-width: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  padding: 1.15rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(8, 24, 52, 0.8) 0%, rgba(4, 14, 34, 0.65) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+              0 12px 32px -6px rgba(0, 4, 15, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.headerBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+}
+
+.headerTitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.standbyPill {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #fbbf24;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+/* Sources List */
+.sourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sourceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.65rem;
+  background: rgba(14, 38, 76, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.sourceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sourceCategory {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sourceStatusBadge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #fbbf24;
+  padding: 0.12rem 0.4rem;
+  border-radius: 0.25rem;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.sourceMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sourceName {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.providerTag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #38bdf8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.sourceDesc {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+/* Future Parameters */
+.futureInputsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.futureSectionTitle {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.futureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.futureItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.45rem;
+  background: rgba(6, 18, 40, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.inputLabel {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #cbd5e1;
+}
+
+.inputState {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #94a3b8;
+}
+
+/* Disclaimer Box */
+.disclaimerBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(8, 28, 60, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  margin-top: auto;
+}
+
+.disclaimerIcon {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  line-height: 1.2;
+}
+
+.disclaimerText {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: #94a3b8;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .forcingCard {
+    width: 100%;
+    min-width: 0;
+  }
+}

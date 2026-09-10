@@ -1,0 +1,133 @@
+/* ==========================================================
+   ProblemCarousel — Two-Row Infinite Oceanic Liquid Glass Marquee
+   ========================================================== */
+
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.75rem 0 1rem;
+  /* Dual-edge gradient fade mask */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 8%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.95) 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 8%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.95) 92%,
+    transparent 100%
+  );
+}
+
+.marqueeRow {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+}
+
+/* Pause animation on row hover or keyboard focus */
+.marqueeRow:hover .marqueeTrackLeft,
+.marqueeRow:hover .marqueeTrackRight,
+.marqueeRow:focus-within .marqueeTrackLeft,
+.marqueeRow:focus-within .marqueeTrackRight {
+  animation-play-state: paused;
+}
+
+/* Row 1 Track: Leftward Motion (0 -> -50%) */
+.marqueeTrackLeft {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marqueeLeft 34s linear infinite;
+  will-change: transform;
+}
+
+/* Row 2 Track: Rightward Motion (-50% -> 0) */
+.marqueeTrackRight {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marqueeRight 38s linear infinite;
+  will-change: transform;
+}
+
+/* Smooth Linear Marquee Keyframes */
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .carouselWrapper {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
+  }
+
+  .marqueeTrackLeft,
+  .marqueeTrackRight {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .carouselWrapper {
+    gap: 0.9rem;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 1) 5%,
+      rgba(0, 0, 0, 1) 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 1) 5%,
+      rgba(0, 0, 0, 1) 95%,
+      transparent 100%
+    );
+  }
+
+  .marqueeTrackLeft {
+    gap: 0.85rem;
+    animation-duration: 40s;
+  }
+
+  .marqueeTrackRight {
+    gap: 0.85rem;
+    animation-duration: 44s;
+  }
+}

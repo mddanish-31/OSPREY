@@ -1,0 +1,156 @@
+/* ==========================================================
+   EvidenceSourcePanel — Evidence Sources Side Context Layout
+   ========================================================== */
+
+.sourceCard {
+  position: relative;
+  width: 320px;
+  min-width: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.15rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(8, 24, 52, 0.8) 0%, rgba(4, 14, 34, 0.65) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+              0 12px 32px -6px rgba(0, 4, 15, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.headerBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+}
+
+.headerTitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.standbyPill {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #fbbf24;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+/* Sources List */
+.sourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.sourceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.55rem;
+  background: rgba(14, 38, 76, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.sourceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.sourceCategory {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sourceStateBadge {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  color: #fbbf24;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  white-space: nowrap;
+}
+
+.sourceMain {
+  display: flex;
+  align-items: center;
+}
+
+.sourceName {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.sourceType {
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  color: #94a3b8;
+}
+
+/* Disclaimer Box */
+.disclaimerBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(8, 28, 60, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  margin-top: auto;
+}
+
+.disclaimerIcon {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  line-height: 1.2;
+}
+
+.disclaimerText {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  line-height: 1.45;
+  color: #94a3b8;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .sourceCard {
+    width: 100%;
+    min-width: 0;
+  }
+}

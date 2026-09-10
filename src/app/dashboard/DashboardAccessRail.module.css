@@ -1,0 +1,363 @@
+/* ==========================================================
+   DashboardAccessRail — Floating Left Vertical Access Rail
+   ========================================================== */
+
+.railWrapper {
+  position: absolute;
+  top: 5.5rem;
+  left: 1.25rem;
+  bottom: 1.5rem;
+  z-index: 45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+/* Slim Vertical Glass Rail */
+.accessRail {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(8, 24, 52, 0.88) 0%, rgba(4, 14, 34, 0.84) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+              0 16px 40px -8px rgba(0, 4, 15, 0.75),
+              0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+.railItemWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.railButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.railButton:hover {
+  color: #ffffff;
+  background: rgba(14, 38, 76, 0.6);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+}
+
+.railButton:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.railButtonActive {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(2, 132, 199, 0.15) 100%) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4) !important;
+}
+
+.railIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeBeaconDot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+/* Hover Tooltip */
+.tooltip {
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.45rem;
+  background: rgba(4, 14, 32, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 60;
+}
+
+.railItemWrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.tooltipNumber {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.tooltipLabel {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Expandable Contextual Glass Panel */
+.contextPanel {
+  pointer-events: auto;
+  width: 310px;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(8, 24, 52, 0.95) 0%, rgba(4, 14, 34, 0.92) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 20px 48px -8px rgba(0, 4, 15, 0.85),
+              0 0 28px rgba(56, 189, 248, 0.2);
+  animation: contextSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes contextSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contextHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.contextTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.contextNumber {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #38bdf8;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.3rem;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.contextTitle {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.contextSubtitle {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #7dd3fc;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contextCloseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #94a3b8;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contextCloseBtn:hover {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+.contextDesc {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.capabilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.capabilityItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.65rem;
+  background: rgba(10, 26, 52, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.capabilityItem:hover,
+.capabilityItem:focus-visible {
+  background: rgba(14, 38, 76, 0.75);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.capabilityItemActive {
+  background: rgba(14, 165, 233, 0.18) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+.capTop {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.capNum {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.capName {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.capDesc {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .railWrapper {
+    top: auto;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 1.5rem);
+    max-width: 100vw;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .accessRail {
+    flex-direction: row;
+    padding: 0.4rem 0.65rem;
+    gap: 0.4rem;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .accessRail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .railItemWrapper {
+    flex-shrink: 0;
+  }
+
+  .railButton {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .tooltip {
+    display: none;
+  }
+
+  .contextPanel {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 2rem);
+    max-width: 360px;
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .railWrapper {
+    bottom: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .accessRail {
+    padding: 0.3rem 0.45rem;
+    gap: 0.25rem;
+  }
+
+  .railButton {
+    width: 1.95rem;
+    height: 1.95rem;
+  }
+
+  .railIcon svg {
+    width: 15px;
+    height: 15px;
+  }
+}

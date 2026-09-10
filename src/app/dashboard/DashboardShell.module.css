@@ -1,0 +1,67 @@
+/* DashboardShell.module.css - OSPREY Application Workspace Layout */
+
+.dashboardContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at 50% 0%, #07152b 0%, #030a18 60%, #01050e 100%);
+  color: #f8fafc;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ambient Background Atmosphere */
+.ambientAtmosphere {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glowTopCenter {
+  position: absolute;
+  top: -10%;
+  left: 30%;
+  width: 40vw;
+  height: 35vh;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, rgba(14, 165, 233, 0.03) 50%, transparent 70%);
+  filter: blur(80px);
+}
+
+.glowBottomLeft {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 35vw;
+  height: 30vh;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 60%);
+  filter: blur(90px);
+}
+
+/* Dashboard Body Container */
+.dashboardBody {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboardBody {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,421 @@
+/* ==========================================================
+   SARScenePanel — Primary Radar Scene Viewport
+   ========================================================== */
+
+.panelContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(10, 28, 56, 0.75) 0%, rgba(5, 18, 40, 0.62) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+              0 14px 36px -8px rgba(0, 4, 15, 0.6);
+  overflow: hidden;
+}
+
+/* Top Provenance & Controls Bar */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.provenanceGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.beaconDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  flex-shrink: 0;
+}
+
+.provenanceTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.provenanceLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sensorSubtitle {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #7dd3fc;
+}
+
+/* Viewport Frame */
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  min-height: 340px;
+  border-radius: 0.95rem;
+  background: radial-gradient(ellipse at 50% 50%, #061e38 0%, #030d1e 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Grid Overlay & Reticles */
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+}
+
+.azimuthAxis {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #7dd3fc;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rangeAxis {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #7dd3fc;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reticleTopLeft {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.reticleTopRight {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.reticleBottomLeft {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.reticleBottomRight {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.centerReticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+}
+
+/* SAR Backscatter Layer */
+.sarBackscatterLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.oceanBackscatterPattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image: radial-gradient(
+    circle at 30% 40%,
+    rgba(14, 165, 233, 0.25) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 75% 65%,
+    rgba(56, 189, 248, 0.18) 0%,
+    transparent 45%
+  );
+}
+
+.radarSweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.03) 40%,
+    rgba(56, 189, 248, 0.16) 95%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  animation: sweepRadar 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sweepRadar {
+  0% {
+    left: -120px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Candidate Slick Anomaly Mask Layer */
+.maskLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.maskSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.slickFill {
+  fill: rgba(6, 18, 38, 0.85);
+  filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.45));
+}
+
+.slickStroke {
+  stroke: #38bdf8;
+  stroke-width: 2.2;
+  stroke-dasharray: 6 3;
+  animation: pulseStroke 3.5s ease-in-out infinite;
+}
+
+@keyframes pulseStroke {
+  0%, 100% {
+    stroke-opacity: 0.7;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
+  }
+  50% {
+    stroke-opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.9));
+  }
+}
+
+.nodePoint {
+  fill: #38bdf8;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px #38bdf8);
+}
+
+.anomalyBadge {
+  position: absolute;
+  top: 3.25rem;
+  right: 1.25rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(6, 22, 46, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #e0f2fe;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+}
+
+.anomalyBeacon {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+/* Optical Cross-Check Overlay */
+.opticalOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.opticalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 36, 68, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.opticalNotice {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 1rem 1.4rem;
+  border-radius: 0.85rem;
+  background: rgba(6, 20, 44, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  max-width: 420px;
+}
+
+.opticalNoticeTag {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opticalNoticeText {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+/* Floating Telemetry Tag */
+.telemetryOverlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 6;
+}
+
+.telemetryPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(6, 20, 42, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: #7dd3fc;
+}
+
+.telemetryDot {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 9999px;
+  background: #34d399;
+  box-shadow: 0 0 6px #34d399;
+}
+
+/* Bottom Metadata Bar */
+.bottomBar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+@media (min-width: 640px) {
+  .bottomBar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.metaKey {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.metaVal {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .radarSweep {
+    animation: none;
+    display: none;
+  }
+  .slickStroke {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .panelContainer {
+    padding: 1.15rem 1.15rem;
+  }
+  .viewport {
+    height: 300px;
+    min-height: 280px;
+  }
+}

@@ -1,0 +1,142 @@
+/* ==========================================================
+   OpticalBandsPanel — MSI Bands Suite
+   ========================================================== */
+
+.bandsCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(8, 24, 52, 0.9) 0%, rgba(4, 14, 34, 0.85) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+              0 14px 34px -8px rgba(0, 4, 15, 0.7);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.headerTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardBadge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.statusPill {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #7dd3fc;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.bandsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.65rem;
+}
+
+.bandItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.65rem;
+  background: rgba(10, 26, 52, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.bandTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.bandCode {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.bandState {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  color: #fbbf24;
+}
+
+.bandName {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.bandMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #94a3b8;
+}
+
+.explanatoryNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.55rem;
+  background: rgba(14, 38, 76, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+.noteIcon {
+  color: #38bdf8;
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.noteText {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .bandsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
