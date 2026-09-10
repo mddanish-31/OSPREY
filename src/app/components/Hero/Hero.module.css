@@ -13,9 +13,10 @@
   justify-content: space-between;
   isolation: isolate;
   background-color: var(--color-abyss);
+  scroll-margin-top: 6rem;
 }
 
-/* Atmospheric Ambient Lighting Overlays (subtle, soft cyan & deep sea glow) */
+/* Atmospheric Ambient Lighting Overlays (subtle, soft oceanic atmosphere) */
 .ambientGlowContainer {
   position: absolute;
   inset: 0;
@@ -26,25 +27,25 @@
 
 .ambientGlowTop {
   position: absolute;
-  top: -15%;
+  top: -12%;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 500px;
+  width: 800px;
+  height: 400px;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
   filter: blur(100px);
-  animation: pulseGlow 8s ease-in-out infinite;
+  animation: pulseGlow 9s ease-in-out infinite;
 }
 
 .ambientGlowRight {
   position: absolute;
-  top: 30%;
+  top: 25%;
   right: -5%;
-  width: 600px;
-  height: 600px;
+  width: 550px;
+  height: 550px;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.09) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
   filter: blur(120px);
 }
 
@@ -52,22 +53,22 @@
   position: absolute;
   bottom: 0%;
   left: -5%;
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 450px;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
-  filter: blur(140px);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  filter: blur(130px);
 }
 
-/* Fine Tactical Coordinate Grid */
+/* Fine Coordinate Grid */
 .fineGrid {
   position: absolute;
   inset: 0;
-  opacity: 0.025;
+  opacity: 0.018;
   background-image:
     linear-gradient(to right, #38bdf8 1px, transparent 1px),
     linear-gradient(to bottom, #38bdf8 1px, transparent 1px);
-  background-size: 4rem 4rem;
+  background-size: 4.5rem 4.5rem;
   pointer-events: none;
 }
 
@@ -76,9 +77,9 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 7.5rem 1.5rem 3.5rem 1.5rem;
+  padding: 6rem 1.5rem 2rem 1.5rem;
   flex: 1;
   display: flex;
   align-items: center;
@@ -87,35 +88,35 @@
 .heroGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: center;
   width: 100%;
 }
 
 @media (min-width: 1024px) {
   .heroMain {
-    padding: 8.5rem 2.5rem 4.5rem 2.5rem;
+    padding: clamp(5.25rem, 7vh, 6.25rem) 2rem clamp(1.25rem, 2.5vh, 2rem) 2rem;
   }
 
   .heroGrid {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 2.5rem;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.75rem;
   }
 }
 
 @media (min-width: 1280px) {
   .heroGrid {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 3.5rem;
   }
 }
 
 @media (max-width: 640px) {
   .heroMain {
-    padding: 5.5rem 1rem 2.5rem 1rem;
+    padding: 5rem 1rem 2rem 1rem;
   }
 
   .heroGrid {
-    gap: 2rem;
+    gap: 1.75rem;
   }
 }

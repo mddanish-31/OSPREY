@@ -19,13 +19,14 @@
 }
 
 /* â”€â”€ Image â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Image ────────────────────────────────────────────────── */
 
 .heroImage {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 60%;  /* Keep Earth/India region visible */
+  object-position: 65% 50%;
 
   /* Prevent unwanted stretching or quality loss */
   image-rendering: auto;
@@ -35,11 +36,10 @@
   transform: translateZ(0);
 }
 
-/* â”€â”€ Subtle overlay gradient â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-/* Very light navy/blue transparent gradient for future text
-   readability. Does NOT heavily darken the image.
-   Stronger gradient toward top-left (text/content side),
-   subtle vignette around edges. */
+/* ── Subtle overlay gradient ──────────────────────────────── */
+/* Soft oceanic atmosphere overlay for text readability without
+   dimming or obscuring the Earth. The Earth remains the dominant
+   and vibrant hero visual. */
 
 .heroOverlay {
   position: absolute;
@@ -47,30 +47,32 @@
   z-index: 1;
   pointer-events: none;
 
-  /* Layered gradient:
-     1. Gentle left-side readability gradient (for future hero text)
-     2. Very subtle top darkening (for future navbar)
-     3. Gentle vignette around edges */
   background:
-    /* Left content-side gradient â€” very subtle */
+    /* Left content-side atmospheric gradient */
     linear-gradient(
       to right,
-      rgba(3, 7, 18, 0.45) 0%,
-      rgba(3, 7, 18, 0.20) 35%,
-      rgba(3, 7, 18, 0.05) 60%,
+      rgba(3, 7, 18, 0.7) 0%,
+      rgba(3, 7, 18, 0.48) 32%,
+      rgba(3, 7, 18, 0.18) 58%,
       transparent 80%
     ),
-    /* Top bar area â€” subtle darkening for future nav */
+    /* Top bar subtle atmospheric tint */
     linear-gradient(
       to bottom,
-      rgba(3, 7, 18, 0.35) 0%,
-      transparent 20%
+      rgba(3, 7, 18, 0.45) 0%,
+      transparent 18%
     ),
-    /* Vignette â€” very subtle edge darkening */
+    /* Bottom soft bleed */
+    linear-gradient(
+      to top,
+      rgba(3, 7, 18, 0.35) 0%,
+      transparent 15%
+    ),
+    /* Vignette around extreme edges */
     radial-gradient(
-      ellipse at center,
-      transparent 50%,
-      rgba(3, 7, 18, 0.25) 100%
+      ellipse at 65% 50%,
+      transparent 55%,
+      rgba(3, 7, 18, 0.28) 100%
     );
 }
 

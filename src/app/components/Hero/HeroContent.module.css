@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
-  max-width: 620px;
+  gap: clamp(0.75rem, 1.8vh, 1.25rem);
+  max-width: 680px;
   z-index: 10;
   pointer-events: auto;
 }
@@ -16,14 +16,15 @@
 .missionPill {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.95rem;
+  gap: 0.55rem;
+  padding: 0.38rem 0.95rem;
   border-radius: 9999px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(12, 32, 64, 0.75) 0%, rgba(6, 18, 40, 0.58) 100%);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+              0 4px 16px -4px rgba(0, 0, 0, 0.5);
   width: fit-content;
   user-select: none;
 }
@@ -33,16 +34,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.55rem;
+  height: 0.55rem;
 }
 
 .missionBeaconDot {
-  width: 0.45rem;
-  height: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 9999px;
   background: var(--color-emerald-pulse);
-  box-shadow: 0 0 8px var(--color-emerald-pulse);
+  box-shadow: 0 0 10px var(--color-emerald-pulse);
 }
 
 .missionBeaconPing {
@@ -57,12 +58,12 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
-  color: #7dd3fc;
-  letter-spacing: 0.08em;
+  color: #38bdf8;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
-/* Monumental Editorial Headline */
+/* Monumental Editorial Headline — Reference-Matched High-Contrast Serif */
 .headlineGroup {
   display: flex;
   flex-direction: column;
@@ -70,31 +71,41 @@
 
 .headline {
   font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-  font-weight: 600;
-  color: #f8fafc;
+  font-size: clamp(2.85rem, 4.6vw, 4.35rem);
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.025em;
-  text-wrap: balance;
+  display: flex;
+  flex-direction: column;
 }
 
-.gradientHeadline {
-  background: linear-gradient(135deg, #38bdf8 0%, #00f0ff 40%, #0ea5e9 80%, #2563eb 100%);
+.headlineLine1 {
+  display: block;
+  white-space: nowrap;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85);
+}
+
+.headlineLine2 {
+  display: block;
+  white-space: nowrap;
+  color: #38bdf8;
+  background: linear-gradient(180deg, #ffffff 0%, #bae6fd 30%, #38bdf8 70%, #0ea5e9 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  display: inline-block;
-  filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.35));
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 24px rgba(56, 189, 248, 0.45));
 }
 
-/* Supporting Paragraph */
+/* Supporting Paragraph — Clean, Bright, High-Contrast Sans */
 .supportingText {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
   font-weight: 400;
-  color: #cbd5e1;
-  line-height: 1.65;
-  max-width: 520px;
+  color: #e2e8f0;
+  line-height: 1.6;
+  max-width: 540px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
 }
 
 /* Action CTAs */
@@ -102,15 +113,15 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 0.85rem;
+  margin-top: 0.25rem;
 }
 
 .primaryCta {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.85rem;
+  padding: 0.82rem 1.85rem;
   border-radius: 9999px;
   background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 55%, #0284c7 100%);
   color: #030712;
@@ -125,7 +136,7 @@
 
 .primaryCta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 36px rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 36px rgba(56, 189, 248, 0.65);
 }
 
 .primaryCta:active {
@@ -133,7 +144,7 @@
 }
 
 .primaryCtaArrow {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1;
   transition: transform 0.2s ease;
 }
@@ -146,28 +157,29 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.78rem 1.6rem;
   border-radius: 9999px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  color: #e2e8f0;
+  background: linear-gradient(135deg, rgba(12, 32, 64, 0.75) 0%, rgba(6, 18, 40, 0.6) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(186, 230, 253, 0.3);
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+              0 8px 24px -6px rgba(0, 0, 0, 0.5);
   transition: all 0.25s ease;
   white-space: nowrap;
 }
 
 .secondaryCta:hover {
-  background: var(--glass-bg-elevated);
-  border-color: var(--glass-border-hover);
+  background: linear-gradient(135deg, rgba(16, 44, 88, 0.85) 0%, rgba(10, 30, 64, 0.7) 100%);
+  border-color: rgba(56, 189, 248, 0.6);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-              0 0 20px rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+              0 0 20px rgba(56, 189, 248, 0.25);
 }
 
 .secondaryCta:active {
@@ -175,10 +187,10 @@
 }
 
 .playIconCircle {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.55rem;
+  height: 1.55rem;
   border-radius: 9999px;
-  background: rgba(56, 189, 248, 0.15);
+  background: rgba(56, 189, 248, 0.18);
   border: 1px solid rgba(56, 189, 248, 0.4);
   display: flex;
   align-items: center;
@@ -189,28 +201,29 @@
 }
 
 .secondaryCta:hover .playIconCircle {
-  background: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.32);
   border-color: var(--color-cyan-bright);
 }
 
-/* Capability Chips Strip */
+/* Capability Chips Strip — Clean Horizontal Flow on Desktop */
 .capabilityStrip {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-top: 0.75rem;
+  margin-top: 0.35rem;
+  max-width: 660px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .contentWrapper {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .ctaGroup {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .primaryCta,
@@ -221,6 +234,25 @@
 
   .capabilityStrip {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .headline {
+    font-size: clamp(2.1rem, 7.5vw, 2.75rem);
+    line-height: 1.1;
+  }
+
+  .headlineLine1,
+  .headlineLine2 {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .headline {
+    font-size: 1.95rem;
   }
 }
