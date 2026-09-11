@@ -5,7 +5,7 @@ import styles from "./CopilotContextPanel.module.css";
 /**
  * CopilotContextPanel
  *
- * Active investigation context panel for #11 AI Copilot.
+ * Active investigation context panel for AI Copilot.
  * Represents the multi-source evidence state available to ground Copilot responses.
  * Strict scientific & operational product truth:
  * - Context fields in truthful "No investigation loaded" / "Awaiting" states

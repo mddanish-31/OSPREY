@@ -226,16 +226,6 @@
   border-color: #38bdf8 !important;
 }
 
-.dropdownItemNumber {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #38bdf8;
-  padding: 0.1rem 0.3rem;
-  border-radius: 0.25rem;
-  background: rgba(56, 189, 248, 0.1);
-}
-
 .dropdownItemContent {
   display: flex;
   flex-direction: column;

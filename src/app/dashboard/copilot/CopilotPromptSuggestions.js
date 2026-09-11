@@ -5,7 +5,7 @@ import styles from "./CopilotPromptSuggestions.module.css";
 /**
  * CopilotPromptSuggestions
  *
- * Question template suggestion chips for #11 AI Copilot.
+ * Question template suggestion chips for AI Copilot.
  * Strict operational product truth:
  * - Templates only; clicking populates the prompt input
  * - Zero fake AI responses or synthetic conversation generation

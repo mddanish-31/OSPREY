@@ -5,7 +5,7 @@ import styles from "./CopilotProvenance.module.css";
 /**
  * CopilotProvenance
  *
- * Model & Lineage Provenance panel for #11 AI Copilot.
+ * Model & Lineage Provenance panel for AI Copilot.
  * Transparently indicates model connectivity and grounding state without fabricating LLM versions or synthetic connections.
  * Strict operational product truth:
  * - Model: "Not connected"

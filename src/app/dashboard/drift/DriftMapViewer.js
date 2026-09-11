@@ -5,7 +5,7 @@ import styles from "./DriftMapViewer.module.css";
 /**
  * DriftMapViewer
  *
- * Central spatial-analysis viewport for #6 Drift & Ocean Dynamics.
+ * Central spatial-analysis viewport for Drift & Ocean Dynamics.
  * Conforms strictly to scientific product truth:
  * - Pure data-ready "Awaiting Candidate Spill Geometry" state
  * - Zero fabricated trajectories, origin markers, vectors, coordinates, or fake coastlines

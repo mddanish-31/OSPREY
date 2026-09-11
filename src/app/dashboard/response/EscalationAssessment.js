@@ -5,7 +5,7 @@ import styles from "./EscalationAssessment.module.css";
 /**
  * EscalationAssessment
  *
- * Operational escalation criteria evaluation panel for #10 Response Intelligence.
+ * Operational escalation criteria evaluation panel for Response Intelligence.
  * Evaluates decision-support dimensions without generating arbitrary severity tiers.
  * Strict operational product truth:
  * - All dimensions in truthful "Pending" and "Awaiting" states

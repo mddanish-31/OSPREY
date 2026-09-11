@@ -5,8 +5,8 @@ import styles from "./DriftProvenance.module.css";
 /**
  * DriftProvenance
  *
- * Lineage panel detailing the 3-step upstream and analytical workflow:
- * #3 AI Spill Detection → #4 Spill Characterization → #6 Drift & Ocean Dynamics
+ * Lineage panel detailing the upstream and analytical workflow:
+ * AI Spill Detection → Spill Characterization → Drift & Ocean Dynamics
  *
  * Conforms strictly to product truth:
  * - Shows data lineage connecting candidate spill geometry to hydrodynamic modeling
@@ -14,9 +14,9 @@ import styles from "./DriftProvenance.module.css";
  */
 export default function DriftProvenance() {
   const lineageSteps = [
-    { num: "#3", name: "AI Detection", role: "Candidate Slick Segmentation" },
-    { num: "#4", name: "Characterization", role: "Spatial Polygon Geometry" },
-    { num: "#6", name: "Drift & Ocean", role: "Hydrodynamic Reconstruction" },
+    { id: "spill-detection", name: "AI Detection", role: "Candidate Slick Segmentation" },
+    { id: "spill-characterization", name: "Characterization", role: "Spatial Polygon Geometry" },
+    { id: "drift-reconstruction", name: "Drift & Ocean", role: "Hydrodynamic Reconstruction" },
   ];
 
   const provenanceItems = [
@@ -32,7 +32,7 @@ export default function DriftProvenance() {
 
   return (
     <section className={styles.provenanceCard} aria-label="Investigation Lineage & Provenance">
-      {/* 3-Stage Dependency Chain */}
+      {/* Dependency Chain */}
       <div className={styles.chainSection}>
         <div className={styles.headerGroup}>
           <span className={styles.sectionBadge}>LINEAGE</span>
@@ -41,9 +41,8 @@ export default function DriftProvenance() {
 
         <div className={styles.chainTrack}>
           {lineageSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepRole}>{step.role}</span>
               </div>
@@ -63,8 +62,8 @@ export default function DriftProvenance() {
         </div>
 
         <div className={styles.provenanceGrid}>
-          {provenanceItems.map((item, idx) => (
-            <div key={idx} className={styles.provenanceItem}>
+          {provenanceItems.map((item) => (
+            <div key={item.label} className={styles.provenanceItem}>
               <span className={styles.itemKey}>{item.label}</span>
               <span className={styles.itemVal}>{item.value}</span>
             </div>

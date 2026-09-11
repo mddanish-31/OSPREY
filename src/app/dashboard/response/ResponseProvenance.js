@@ -5,9 +5,9 @@ import styles from "./ResponseProvenance.module.css";
 /**
  * ResponseProvenance
  *
- * Lineage & Parameter Provenance panel for #10 Response Intelligence.
+ * Lineage & Parameter Provenance panel for Response Intelligence.
  * Displays the 7-step investigation lineage:
- * #3 AI Spill Detection → #4 Spill Characterization → #6 Drift & Ocean Dynamics → #7 Vessel Intelligence → #8 Evidence & Explainability → #9 Environmental Risk → #10 Response Intelligence
+ * AI Spill Detection → Spill Characterization → Drift & Ocean Dynamics → Vessel Intelligence → Evidence & Explainability → Environmental Risk → Response Intelligence
  *
  * Strict operational product truth:
  * - Parameters reflect truthful multi-source lineage and standby states
@@ -15,13 +15,13 @@ import styles from "./ResponseProvenance.module.css";
  */
 export default function ResponseProvenance() {
   const lineageSteps = [
-    { num: "#3", name: "AI Detection", role: "Slick Segmentation" },
-    { num: "#4", name: "Characterization", role: "Spatial Polygon" },
-    { num: "#6", name: "Drift Dynamics", role: "Projected Trajectory" },
-    { num: "#7", name: "Vessel Intelligence", role: "AIS Correlation" },
-    { num: "#8", name: "Evidence Synthesis", role: "Explainable Attribution" },
-    { num: "#9", name: "Environmental Risk", role: "Exposure Assessment" },
-    { num: "#10", name: "Response Intelligence", role: "Priority Planning" },
+    { id: "spill-detection", name: "AI Detection", role: "Slick Segmentation" },
+    { id: "spill-characterization", name: "Characterization", role: "Spatial Polygon" },
+    { id: "drift-dynamics", name: "Drift Dynamics", role: "Projected Trajectory" },
+    { id: "vessel-intelligence", name: "Vessel Intelligence", role: "AIS Correlation" },
+    { id: "evidence-synthesis", name: "Evidence Synthesis", role: "Explainable Attribution" },
+    { id: "environmental-risk", name: "Environmental Risk", role: "Exposure Assessment" },
+    { id: "response-intelligence", name: "Response Intelligence", role: "Priority Planning" },
   ];
 
   const provenanceItems = [
@@ -36,7 +36,7 @@ export default function ResponseProvenance() {
 
   return (
     <section className={styles.provenanceCard} aria-label="Response Lineage and Provenance Panel">
-      {/* 7-Step Investigation Lineage */}
+      {/* Investigation Lineage */}
       <div className={styles.chainSection}>
         <div className={styles.headerGroup}>
           <div className={styles.headerTitleGroup}>
@@ -47,9 +47,8 @@ export default function ResponseProvenance() {
 
         <div className={styles.chainTrack}>
           {lineageSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepRole}>{step.role}</span>
               </div>
@@ -71,8 +70,8 @@ export default function ResponseProvenance() {
         </div>
 
         <div className={styles.provenanceGrid}>
-          {provenanceItems.map((item, idx) => (
-            <div key={idx} className={styles.provenanceItem}>
+          {provenanceItems.map((item) => (
+            <div key={item.label} className={styles.provenanceItem}>
               <span className={styles.itemKey}>{item.label}</span>
               <span className={styles.itemVal}>{item.value}</span>
             </div>

@@ -5,7 +5,7 @@ import styles from "./CopilotToolStatus.module.css";
 /**
  * CopilotToolStatus
  *
- * Grounded tool execution status panel for #11 AI Copilot.
+ * Grounded tool execution status panel for AI Copilot.
  * Represents analytical pipeline tools available to the assistant once active investigation data exists.
  * Strict operational product truth:
  * - Tools in truthful "Standby" state

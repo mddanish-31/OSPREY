@@ -5,8 +5,8 @@ import styles from "./VesselProvenance.module.css";
 /**
  * VesselProvenance
  *
- * Lineage panel detailing the 4-step multi-source investigation workflow:
- * #3 AI Spill Detection → #4 Spill Characterization → #6 Drift & Ocean Dynamics → #7 Vessel Intelligence
+ * Lineage panel detailing the multi-source investigation workflow:
+ * AI Spill Detection → Spill Characterization → Drift & Ocean Dynamics → Vessel Intelligence
  *
  * Conforms strictly to product truth:
  * - Shows data lineage connecting upstream satellite detection & drift modeling to vessel intelligence
@@ -14,10 +14,10 @@ import styles from "./VesselProvenance.module.css";
  */
 export default function VesselProvenance() {
   const lineageSteps = [
-    { num: "#3", name: "AI Detection", role: "Slick Segmentation" },
-    { num: "#4", name: "Characterization", role: "Spatial Polygon" },
-    { num: "#6", name: "Drift & Ocean", role: "Probable Origin Zone" },
-    { num: "#7", name: "Vessel Intelligence", role: "AIS Correlation & Attribution" },
+    { id: "spill-detection", name: "AI Detection", role: "Slick Segmentation" },
+    { id: "spill-characterization", name: "Characterization", role: "Spatial Polygon" },
+    { id: "drift-reconstruction", name: "Drift & Ocean", role: "Probable Origin Zone" },
+    { id: "vessel-intelligence", name: "Vessel Intelligence", role: "AIS Correlation & Attribution" },
   ];
 
   const provenanceItems = [
@@ -33,7 +33,7 @@ export default function VesselProvenance() {
 
   return (
     <section className={styles.provenanceCard} aria-label="Vessel Investigation Lineage & Provenance">
-      {/* 4-Stage Dependency Chain */}
+      {/* Dependency Chain */}
       <div className={styles.chainSection}>
         <div className={styles.headerGroup}>
           <span className={styles.sectionBadge}>LINEAGE</span>
@@ -42,9 +42,8 @@ export default function VesselProvenance() {
 
         <div className={styles.chainTrack}>
           {lineageSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepRole}>{step.role}</span>
               </div>
@@ -64,8 +63,8 @@ export default function VesselProvenance() {
         </div>
 
         <div className={styles.provenanceGrid}>
-          {provenanceItems.map((item, idx) => (
-            <div key={idx} className={styles.provenanceItem}>
+          {provenanceItems.map((item) => (
+            <div key={item.label} className={styles.provenanceItem}>
               <span className={styles.itemKey}>{item.label}</span>
               <span className={styles.itemVal}>{item.value}</span>
             </div>

@@ -100,15 +100,8 @@
 .stageTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.25rem;
-}
-
-.stageNumber {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
 }
 
 .stageStateBadge {

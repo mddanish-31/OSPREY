@@ -5,7 +5,7 @@ import styles from "./ReportEvidenceIndex.module.css";
 /**
  * ReportEvidenceIndex
  *
- * Evidence index compilation panel for #12 Investigation Reports.
+ * Evidence index compilation panel for Investigation Reports.
  * Prepares the multi-source evidence index structure for the compiled report.
  *
  * Strict scientific & operational product truth:

@@ -5,7 +5,7 @@ import styles from "./MonitoringPlan.module.css";
 /**
  * MonitoringPlan
  *
- * Multi-sensor surveillance monitoring and iterative reassessment panel for #10 Response Intelligence.
+ * Multi-sensor surveillance monitoring and iterative reassessment panel for Response Intelligence.
  * Outlines the conceptual monitoring feedback loop:
  * Observe → Reassess → Update Drift → Re-evaluate Risk → Continue Monitoring
  *

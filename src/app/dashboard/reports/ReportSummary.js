@@ -5,7 +5,7 @@ import styles from "./ReportSummary.module.css";
 /**
  * ReportSummary
  *
- * Operational report summary panel for #12 Investigation Reports.
+ * Operational report summary panel for Investigation Reports.
  * Displays truthful investigation assessment synthesis state.
  *
  * Strict scientific & operational product truth:

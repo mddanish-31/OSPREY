@@ -5,7 +5,7 @@ import styles from "./EnvironmentalRiskAssessment.module.css";
 /**
  * EnvironmentalRiskAssessment
  *
- * Primary decision-support risk synthesis panel for #9 Environmental Risk & Impact.
+ * Primary decision-support risk synthesis panel for Environmental Risk & Impact.
  * Evaluates 6 core environmental evidence factors without fabricating synthetic scores or levels.
  * Strict scientific product truth:
  * - Factors and summary values remain in truthful "Pending", "Standby", and "Awaiting" states
@@ -13,12 +13,12 @@ import styles from "./EnvironmentalRiskAssessment.module.css";
  */
 export default function EnvironmentalRiskAssessment() {
   const evidenceFactors = [
-    { num: "01", name: "Spill Extent", status: "Pending" },
-    { num: "02", name: "Drift Exposure", status: "Pending" },
-    { num: "03", name: "Coastal Proximity", status: "Pending" },
-    { num: "04", name: "Sensitive Area Overlap", status: "Pending" },
-    { num: "05", name: "Fisheries Exposure", status: "Pending" },
-    { num: "06", name: "Persistence / Weathering Context", status: "Pending" },
+    { id: "spill-extent", name: "Spill Extent", status: "Pending" },
+    { id: "drift-exposure", name: "Drift Exposure", status: "Pending" },
+    { id: "coastal-proximity", name: "Coastal Proximity", status: "Pending" },
+    { id: "sensitive-area-overlap", name: "Sensitive Area Overlap", status: "Pending" },
+    { id: "fisheries-exposure", name: "Fisheries Exposure", status: "Pending" },
+    { id: "persistence-weathering", name: "Persistence / Weathering Context", status: "Pending" },
   ];
 
   const summaryState = [
@@ -41,9 +41,8 @@ export default function EnvironmentalRiskAssessment() {
         <span className={styles.factorsHeading}>Contributing Evidence Factors</span>
         <div className={styles.factorsGrid}>
           {evidenceFactors.map((item) => (
-            <div key={item.num} className={styles.factorItem}>
+            <div key={item.id} className={styles.factorItem}>
               <div className={styles.factorTop}>
-                <span className={styles.factorNum}>{item.num}</span>
                 <span className={styles.factorStatus}>{item.status}</span>
               </div>
               <span className={styles.factorName}>{item.name}</span>
@@ -54,8 +53,8 @@ export default function EnvironmentalRiskAssessment() {
 
       {/* Summary Grid */}
       <div className={styles.summaryGrid}>
-        {summaryState.map((item, idx) => (
-          <div key={idx} className={styles.summaryItem}>
+        {summaryState.map((item) => (
+          <div key={item.key} className={styles.summaryItem}>
             <span className={styles.summaryKey}>{item.key}</span>
             <span className={styles.summaryVal}>{item.val}</span>
           </div>

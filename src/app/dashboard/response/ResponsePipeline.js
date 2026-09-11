@@ -5,8 +5,8 @@ import styles from "./ResponsePipeline.module.css";
 /**
  * ResponsePipeline
  *
- * 8-stage Operational Response synthesis pipeline for #10 Response Intelligence:
- * 01 Investigation Context → 02 Environmental Assessment → 03 Impact Assessment → 04 Priority Assessment → 05 Response Planning → 06 Monitoring → 07 Escalation Review → 08 Response Intelligence
+ * Operational Response synthesis pipeline for Response Intelligence:
+ * Investigation Context → Environmental Assessment → Impact Assessment → Priority Assessment → Response Planning → Monitoring → Escalation Review → Response Intelligence
  *
  * Strict operational product truth:
  * - All stages in truthful "Awaiting" standby states
@@ -14,14 +14,14 @@ import styles from "./ResponsePipeline.module.css";
  */
 export default function ResponsePipeline() {
   const stages = [
-    { num: "01", name: "Investigation Context", state: "Awaiting active investigation" },
-    { num: "02", name: "Environmental Assessment", state: "Awaiting risk analysis" },
-    { num: "03", name: "Impact Assessment", state: "Awaiting affected area" },
-    { num: "04", name: "Priority Assessment", state: "Awaiting exposure evidence" },
-    { num: "05", name: "Response Planning", state: "Awaiting priority assessment" },
-    { num: "06", name: "Monitoring", state: "Awaiting monitoring configuration" },
-    { num: "07", name: "Escalation Review", state: "Awaiting assessment" },
-    { num: "08", name: "Response Intelligence", state: "Awaiting operational context" },
+    { id: "investigation-context", name: "Investigation Context", state: "Awaiting active investigation" },
+    { id: "environmental-assessment", name: "Environmental Assessment", state: "Awaiting risk analysis" },
+    { id: "impact-assessment", name: "Impact Assessment", state: "Awaiting affected area" },
+    { id: "priority-assessment", name: "Priority Assessment", state: "Awaiting exposure evidence" },
+    { id: "response-planning", name: "Response Planning", state: "Awaiting priority assessment" },
+    { id: "monitoring", name: "Monitoring", state: "Awaiting monitoring configuration" },
+    { id: "escalation-review", name: "Escalation Review", state: "Awaiting assessment" },
+    { id: "response-intelligence", name: "Response Intelligence", state: "Awaiting operational context" },
   ];
 
   return (
@@ -39,10 +39,9 @@ export default function ResponsePipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

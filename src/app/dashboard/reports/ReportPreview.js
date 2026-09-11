@@ -5,7 +5,7 @@ import styles from "./ReportPreview.module.css";
 /**
  * ReportPreview
  *
- * Report visual document canvas & export shell for #12 Investigation Reports.
+ * Report visual document canvas & export shell for Investigation Reports.
  *
  * Strict scientific & operational product truth:
  * - Empty state: "Report Preview Unavailable"
@@ -21,12 +21,12 @@ export default function ReportPreview() {
   ];
 
   const skeletonSections = [
-    { num: "01", name: "Executive Summary" },
-    { num: "02", name: "Satellite Observation" },
-    { num: "03", name: "Spill Detection & Geometry" },
-    { num: "04", name: "Origin & Vessel Evidence" },
-    { num: "05", name: "Environmental & Response Assessment" },
-    { num: "06", name: "Audit Trail & Provenance" },
+    { id: "executive-summary", name: "Executive Summary" },
+    { id: "satellite-observation", name: "Satellite Observation" },
+    { id: "spill-detection-geometry", name: "Spill Detection & Geometry" },
+    { id: "origin-vessel-evidence", name: "Origin & Vessel Evidence" },
+    { id: "environmental-response-assessment", name: "Environmental & Response Assessment" },
+    { id: "audit-trail-provenance", name: "Audit Trail & Provenance" },
   ];
 
   return (
@@ -107,9 +107,8 @@ export default function ReportPreview() {
           {/* Conceptual Document Section Wireframe Outline */}
           <div className={styles.skeletonSectionList} aria-hidden="true">
             {skeletonSections.map((sec) => (
-              <div key={sec.num} className={styles.skeletonBlock}>
+              <div key={sec.id} className={styles.skeletonBlock}>
                 <div className={styles.skeletonHeader}>
-                  <span className={styles.skeletonNum}>{sec.num}</span>
                   <span className={styles.skeletonTitle}>{sec.name}</span>
                 </div>
                 <div className={styles.skeletonBar} />

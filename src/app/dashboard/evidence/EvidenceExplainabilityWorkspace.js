@@ -13,7 +13,7 @@ import styles from "./EvidenceExplainabilityWorkspace.module.css";
 /**
  * EvidenceExplainabilityWorkspace
  *
- * Primary orchestrator for capability #8: Evidence & Explainability.
+ * Primary orchestrator for Evidence & Explainability.
  * Assembles:
  * - EvidenceChain (dominant centerpiece evidence progression spine)
  * - EvidenceSourcePanel (satellite, optical, hydrodynamic, wind, AIS, drift sources context)
@@ -22,17 +22,17 @@ import styles from "./EvidenceExplainabilityWorkspace.module.css";
  * - CrossSensorEvidence (SAR radar vs transponder cross-matching for potential non-broadcasting vessels)
  * - AttributionExplanation (7-factor explainable multi-source association synthesis)
  * - EvidencePipeline (8-stage evidence synthesis pipeline in standby)
- * - EvidenceProvenance (5-step end-to-end lineage from #3 Detection to #8 Attribution)
+ * - EvidenceProvenance (5-step end-to-end lineage from Detection to Attribution)
  */
 export default function EvidenceExplainabilityWorkspace() {
   const dependencyStages = [
-    { num: "#3", name: "Spill Detection" },
-    { num: "#4", name: "Spill Geometry" },
-    { num: "#6", name: "Origin Reconstruction" },
-    { num: "#7", name: "AIS Correlation" },
-    { num: "Beh", name: "Behavioural Analysis" },
-    { num: "Fuse", name: "Cross-Sensor Evidence" },
-    { num: "#8", name: "Explainable Association" },
+    { id: "spill-detection", name: "Spill Detection" },
+    { id: "spill-geometry", name: "Spill Geometry" },
+    { id: "origin-reconstruction", name: "Origin Reconstruction" },
+    { id: "ais-correlation", name: "AIS Correlation" },
+    { id: "behavioural-analysis", name: "Behavioural Analysis" },
+    { id: "cross-sensor-evidence", name: "Cross-Sensor Evidence" },
+    { id: "explainable-association", name: "Explainable Association" },
   ];
 
   return (
@@ -42,13 +42,11 @@ export default function EvidenceExplainabilityWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>08</span>
             <span className={styles.badgeCategory}>EVIDENCE &amp; EXPLAINABILITY</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Evidence &amp; Explainability</h2>
-            <span className={styles.capabilityBadge}>#8</span>
           </div>
         </div>
 
@@ -74,9 +72,8 @@ export default function EvidenceExplainabilityWorkspace() {
         </div>
         <div className={styles.dependencyTrack}>
           {dependencyStages.map((step, idx) => (
-            <div key={idx} className={styles.dependencyItem}>
+            <div key={step.id} className={styles.dependencyItem}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
               </div>
               {idx < dependencyStages.length - 1 && (

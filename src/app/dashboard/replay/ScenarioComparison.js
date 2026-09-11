@@ -5,7 +5,7 @@ import styles from "./ScenarioComparison.module.css";
 /**
  * ScenarioComparison
  *
- * Comparative assessment matrix (Baseline vs What-if Scenario) for #13 Incident Replay.
+ * Comparative assessment matrix (Baseline vs What-if Scenario) for Incident Replay.
  *
  * Strict scientific & operational product truth:
  * - State: "Comparison unavailable"

@@ -5,7 +5,7 @@ import styles from "./ScenarioParameters.module.css";
 /**
  * ScenarioParameters
  *
- * Parameter configuration matrix for #13 What-if Simulation.
+ * Parameter configuration matrix for What-if Simulation.
  *
  * Strict scientific & operational product truth:
  * - 4 parameter groups: Spatial, Temporal, Environmental, Simulation

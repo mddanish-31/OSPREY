@@ -5,9 +5,9 @@ import styles from "./EnvironmentalProvenance.module.css";
 /**
  * EnvironmentalProvenance
  *
- * Lineage & Parameter Provenance panel for #9 Environmental Risk & Impact.
+ * Lineage & Parameter Provenance panel for Environmental Risk & Impact.
  * Displays the 5-step investigation lineage:
- * #3 AI Spill Detection → #4 Spill Characterization → #6 Drift & Ocean Dynamics → #8 Evidence & Explainability → #9 Environmental Risk
+ * AI Spill Detection → Spill Characterization → Drift & Ocean Dynamics → Evidence & Explainability → Environmental Risk
  *
  * Strict scientific product truth:
  * - Parameters reflect truthful data sources and standby states
@@ -15,11 +15,11 @@ import styles from "./EnvironmentalProvenance.module.css";
  */
 export default function EnvironmentalProvenance() {
   const lineageSteps = [
-    { num: "#3", name: "AI Detection", role: "Slick Segmentation" },
-    { num: "#4", name: "Characterization", role: "Spatial Polygon" },
-    { num: "#6", name: "Drift Dynamics", role: "Projected Trajectory" },
-    { num: "#8", name: "Evidence Synthesis", role: "Supporting Context" },
-    { num: "#9", name: "Environmental Risk", role: "Exposure Assessment" },
+    { id: "spill-detection", name: "AI Detection", role: "Slick Segmentation" },
+    { id: "spill-characterization", name: "Characterization", role: "Spatial Polygon" },
+    { id: "drift-dynamics", name: "Drift Dynamics", role: "Projected Trajectory" },
+    { id: "evidence-synthesis", name: "Evidence Synthesis", role: "Supporting Context" },
+    { id: "environmental-risk", name: "Environmental Risk", role: "Exposure Assessment" },
   ];
 
   const provenanceItems = [
@@ -46,9 +46,8 @@ export default function EnvironmentalProvenance() {
 
         <div className={styles.chainTrack}>
           {lineageSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepRole}>{step.role}</span>
               </div>
@@ -70,8 +69,8 @@ export default function EnvironmentalProvenance() {
         </div>
 
         <div className={styles.provenanceGrid}>
-          {provenanceItems.map((item, idx) => (
-            <div key={idx} className={styles.provenanceItem}>
+          {provenanceItems.map((item) => (
+            <div key={item.label} className={styles.provenanceItem}>
               <span className={styles.itemKey}>{item.label}</span>
               <span className={styles.itemVal}>{item.value}</span>
             </div>

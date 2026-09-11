@@ -120,14 +120,6 @@
   overflow: hidden;
 }
 
-.secNum {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #38bdf8;
-  flex-shrink: 0;
-}
-
 .secTitle {
   font-family: var(--font-sans, system-ui, sans-serif);
   font-size: 0.72rem;

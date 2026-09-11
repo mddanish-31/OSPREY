@@ -5,7 +5,7 @@ import styles from "./AISCorrelationViewer.module.css";
 /**
  * AISCorrelationViewer
  *
- * Primary spatial-analysis viewport for #7 Vessel Intelligence / AIS Correlation.
+ * Primary spatial-analysis viewport for Vessel Intelligence / AIS Correlation.
  * Strict scientific product truth:
  * - Pure data-ready "Awaiting Probable Origin Zone" state
  * - Zero fabricated vessel tracks, markers, coordinates, ports, or coastlines

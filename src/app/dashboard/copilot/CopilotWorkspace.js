@@ -11,7 +11,7 @@ import styles from "./CopilotWorkspace.module.css";
 /**
  * CopilotWorkspace
  *
- * Primary orchestrator for Capability #11: AI Copilot.
+ * Primary orchestrator for AI Copilot.
  * Assembles:
  * - CopilotConversation (evidence-grounded conversation frame with template suggestions & standby notice)
  * - CopilotContextPanel (upstream multi-source telemetry bindings)
@@ -22,13 +22,13 @@ import styles from "./CopilotWorkspace.module.css";
  */
 export default function CopilotWorkspace() {
   const contextChain = [
-    { name: "Investigation" },
-    { name: "Detection" },
-    { name: "Origin" },
-    { name: "Vessel Evidence" },
-    { name: "Environmental Risk" },
-    { name: "Response Intelligence" },
-    { name: "Copilot" },
+    { id: "investigation", name: "Investigation" },
+    { id: "detection", name: "Detection" },
+    { id: "origin", name: "Origin" },
+    { id: "vessel-evidence", name: "Vessel Evidence" },
+    { id: "environmental-risk", name: "Environmental Risk" },
+    { id: "response-intelligence", name: "Response Intelligence" },
+    { id: "copilot", name: "Copilot" },
   ];
 
   return (
@@ -38,13 +38,11 @@ export default function CopilotWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>11</span>
             <span className={styles.badgeCategory}>AI COPILOT</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Investigation Copilot</h2>
-            <span className={styles.capabilityBadge}>#11</span>
           </div>
         </div>
 
@@ -70,7 +68,7 @@ export default function CopilotWorkspace() {
         </div>
         <div className={styles.contextTrack}>
           {contextChain.map((step, idx) => (
-            <div key={idx} className={styles.contextItem}>
+            <div key={step.id} className={styles.contextItem}>
               <div className={styles.stepBox}>
                 <span className={styles.stepName}>{step.name}</span>
               </div>

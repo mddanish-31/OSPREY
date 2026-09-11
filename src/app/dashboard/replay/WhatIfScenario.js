@@ -5,7 +5,7 @@ import styles from "./WhatIfScenario.module.css";
 /**
  * WhatIfScenario
  *
- * Controlled scenario simulation configuration panel for #13 Incident Replay.
+ * Controlled scenario simulation configuration panel for Incident Replay.
  *
  * Strict scientific & operational product truth:
  * - Status: "Scenario Simulation Standby"

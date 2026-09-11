@@ -14,13 +14,13 @@ import styles from "./AttributionExplanation.module.css";
  */
 export default function AttributionExplanation() {
   const evidenceFactors = [
-    { num: "01", factor: "Spatial Proximity", status: "Pending", desc: "Distance to probable release zone" },
-    { num: "02", factor: "Temporal Correlation", status: "Pending", desc: "Presence during release time window" },
-    { num: "03", factor: "Trajectory Alignment", status: "Pending", desc: "Track heading & intersection geometry" },
-    { num: "04", factor: "Speed / Course Consistency", status: "Pending", desc: "Hydrodynamic displacement match" },
-    { num: "05", factor: "Behavioural Evidence", status: "Pending", desc: "Speed anomalies, loitering, course shifts" },
-    { num: "06", factor: "AIS Continuity / Gaps", status: "Pending", desc: "Transponder blackout period detection" },
-    { num: "07", factor: "SAR Vessel Evidence", status: "Pending", desc: "Coincident metallic radar point contact" },
+    { id: "spatial-proximity", factor: "Spatial Proximity", status: "Pending", desc: "Distance to probable release zone" },
+    { id: "temporal-correlation", factor: "Temporal Correlation", status: "Pending", desc: "Presence during release time window" },
+    { id: "trajectory-alignment", factor: "Trajectory Alignment", status: "Pending", desc: "Track heading & intersection geometry" },
+    { id: "speed-course-consistency", factor: "Speed / Course Consistency", status: "Pending", desc: "Hydrodynamic displacement match" },
+    { id: "behavioural-evidence", factor: "Behavioural Evidence", status: "Pending", desc: "Speed anomalies, loitering, course shifts" },
+    { id: "ais-continuity-gaps", factor: "AIS Continuity / Gaps", status: "Pending", desc: "Transponder blackout period detection" },
+    { id: "sar-vessel-evidence", factor: "SAR Vessel Evidence", status: "Pending", desc: "Coincident metallic radar point contact" },
   ];
 
   const synthesisState = [
@@ -45,9 +45,8 @@ export default function AttributionExplanation() {
         <span className={styles.factorsHeading}>7-Factor Evidence Assessment</span>
         <div className={styles.factorsGrid}>
           {evidenceFactors.map((item) => (
-            <div key={item.num} className={styles.factorItem}>
+            <div key={item.id} className={styles.factorItem}>
               <div className={styles.factorTop}>
-                <span className={styles.factorNum}>{item.num}</span>
                 <span className={styles.factorStatus}>{item.status}</span>
               </div>
               <span className={styles.factorName}>{item.factor}</span>
@@ -59,8 +58,8 @@ export default function AttributionExplanation() {
 
       {/* Synthesis Summary Grid */}
       <div className={styles.summaryGrid}>
-        {synthesisState.map((item, idx) => (
-          <div key={idx} className={styles.summaryItem}>
+        {synthesisState.map((item) => (
+          <div key={item.label} className={styles.summaryItem}>
             <span className={styles.summaryKey}>{item.label}</span>
             <span className={styles.summaryVal}>{item.value}</span>
           </div>

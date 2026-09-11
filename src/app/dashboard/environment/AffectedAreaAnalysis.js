@@ -5,7 +5,7 @@ import styles from "./AffectedAreaAnalysis.module.css";
 /**
  * AffectedAreaAnalysis
  *
- * Affected Area & Spatial Extent panel for #9 Environmental Risk & Impact.
+ * Affected Area & Spatial Extent panel for Environmental Risk & Impact.
  * Connects upstream detected spill geometry and drift simulation to downstream exposure evaluation.
  * Strict scientific product truth:
  * - Extent and area metrics initialized to truthful "Awaiting" / "Pending" states

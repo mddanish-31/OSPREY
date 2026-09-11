@@ -7,14 +7,14 @@ import styles from "./CharacterizationProvenance.module.css";
  *
  * Upstream detection provenance and scene context panel.
  * Conforms strictly to truthfulness:
- * - Clearly establishes the upstream lineage: #2 SAR Scene → #3 AI Spill Detection → #4 Spill Characterization
+ * - Clearly establishes the upstream lineage: SAR Scene → AI Spill Detection → Spill Characterization
  * - Shows explicit awaiting/pending states for scene and detection context
  */
 export default function CharacterizationProvenance() {
   const provenanceSteps = [
-    { num: "#2", name: "SAR Scene", state: "Input source" },
-    { num: "#3", name: "AI Spill Detection", state: "Upstream segmentation" },
-    { num: "#4", name: "Spill Characterization", state: "Current analysis" },
+    { id: "sar-scene", name: "SAR Scene", state: "Input source" },
+    { id: "spill-detection", name: "AI Spill Detection", state: "Upstream segmentation" },
+    { id: "spill-characterization", name: "Spill Characterization", state: "Current analysis" },
   ];
 
   const sceneContext = [
@@ -36,9 +36,8 @@ export default function CharacterizationProvenance() {
 
         <div className={styles.chainTrack}>
           {provenanceSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepState}>{step.state}</span>
               </div>
@@ -58,8 +57,8 @@ export default function CharacterizationProvenance() {
         </div>
 
         <div className={styles.contextGrid}>
-          {sceneContext.map((item, idx) => (
-            <div key={idx} className={styles.contextItem}>
+          {sceneContext.map((item) => (
+            <div key={item.label} className={styles.contextItem}>
               <span className={styles.contextKey}>{item.label}</span>
               <span className={styles.contextVal}>{item.value}</span>
             </div>

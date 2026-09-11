@@ -1,0 +1,134 @@
+/* ==========================================================
+   GeographicMap.module.css — Interactive GeoJSON Canvas Map
+   ========================================================== */
+
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  flex: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #030a18;
+  z-index: 1;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  background: #030a18 !important;
+}
+
+/* Dark Oceanic Basemap Filter for standard OpenStreetMap tiles */
+.mapWrapper :global(.leaflet-tile-pane) {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+/* Subtle Map Status / Info Banner (Top Left inside map) */
+.mapInfoBadge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(4, 14, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 4, 15, 0.5);
+  pointer-events: auto;
+  max-width: calc(100% - 6rem);
+  overflow: hidden;
+}
+
+.infoDot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: #7dd3fc;
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.8);
+  flex-shrink: 0;
+}
+
+.infoDotActive {
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.infoText {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Custom Leaflet Map Controls override */
+.mapWrapper :global(.leaflet-control-zoom) {
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  background: rgba(8, 24, 52, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+  margin-top: 0.85rem !important;
+  margin-right: 0.85rem !important;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a) {
+  background: transparent !important;
+  color: #7dd3fc !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15) !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  font-size: 14px !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a:hover) {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #ffffff !important;
+}
+
+.mapWrapper :global(.leaflet-popup-content-wrapper) {
+  background: rgba(8, 24, 52, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  border-radius: 0.65rem !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 8px 24px rgba(0, 4, 15, 0.8) !important;
+}
+
+.mapWrapper :global(.leaflet-popup-tip) {
+  background: rgba(8, 24, 52, 0.95) !important;
+}
+
+.mapWrapper :global(.leaflet-popup-content) {
+  margin: 0.75rem 0.95rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.78rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Attribution styling */
+.mapWrapper :global(.leaflet-control-attribution) {
+  background: rgba(3, 10, 24, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  color: #64748b !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.55rem !important;
+  border-top-left-radius: 0.35rem;
+}
+
+.mapWrapper :global(.leaflet-control-attribution a) {
+  color: #7dd3fc !important;
+}

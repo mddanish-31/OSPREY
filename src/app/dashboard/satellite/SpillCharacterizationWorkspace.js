@@ -10,12 +10,12 @@ import styles from "./SpillCharacterizationWorkspace.module.css";
 /**
  * SpillCharacterizationWorkspace
  *
- * Primary orchestrator for capability #4: Spill Characterization.
+ * Primary orchestrator for Spill Characterization.
  * Assembles:
  * - GeometryViewer (spatial-analysis viewport with disabled future-ready controls)
  * - GeometryMetrics (spatial metrics, perimeter, area, centroid in pending state)
  * - ShapeCharacteristics (orientation, compactness, boundary complexity, spatial confidence)
- * - CharacterizationProvenance (upstream lineage from #2 SAR Scene and #3 AI Spill Detection)
+ * - CharacterizationProvenance (upstream lineage from SAR Scene and AI Spill Detection)
  * - CharacterizationPipeline (5-stage spatial characterization sequence)
  */
 export default function SpillCharacterizationWorkspace() {
@@ -26,13 +26,11 @@ export default function SpillCharacterizationWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>04</span>
             <span className={styles.badgeCategory}>SATELLITE INTELLIGENCE</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Spill Characterization</h2>
-            <span className={styles.capabilityBadge}>#4</span>
           </div>
         </div>
 

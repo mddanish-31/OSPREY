@@ -5,7 +5,7 @@ import styles from "./ResponseActionPanel.module.css";
 /**
  * ResponseActionPanel
  *
- * Operational response action categories panel for #10 Response Intelligence.
+ * Operational response action categories panel for Response Intelligence.
  * Outlines structured response frameworks without presenting active deployment commands.
  * Strict operational product truth:
  * - All response categories remain in "Awaiting" states

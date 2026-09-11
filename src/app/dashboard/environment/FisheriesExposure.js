@@ -5,10 +5,11 @@ import styles from "./FisheriesExposure.module.css";
 /**
  * FisheriesExposure
  *
- * Commercial & artisanal fisheries vulnerability analysis panel for #9 Environmental Risk & Impact.
+ * Commercial & artisanal fisheries vulnerability analysis panel for Environmental Risk & Impact.
+ * Evaluates active fishing grounds and aquaculture zones against projected spill envelope.
  * Strict scientific product truth:
- * - Layers & overlap fields in truthful "Awaiting" / "Pending" states
- * - Zero fabricated fishing zones, vessel densities, catch values, or overlap percentages
+ * - Current fields initialized to truthful "Awaiting" and "Pending" states
+ * - Zero fabricated economic loss values, catch tonnage, or synthetic impacts
  */
 export default function FisheriesExposure() {
   const fields = [

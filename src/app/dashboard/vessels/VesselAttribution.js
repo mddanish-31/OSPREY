@@ -13,13 +13,13 @@ import styles from "./VesselAttribution.module.css";
  */
 export default function VesselAttribution() {
   const evidenceStack = [
-    { num: "01", factor: "Spatial Proximity", desc: "Distance to probable release zone" },
-    { num: "02", factor: "Temporal Correlation", desc: "Presence during estimated release window" },
-    { num: "03", factor: "Trajectory Alignment", desc: "Heading & course vector intersection" },
-    { num: "04", factor: "Speed / Course Consistency", desc: "Hydrodynamic displacement match" },
-    { num: "05", factor: "Behavioural Evidence", desc: "Loitering, speed changes, route shifts" },
-    { num: "06", factor: "AIS Continuity / Gaps", desc: "Transponder transmission gaps" },
-    { num: "07", factor: "SAR Vessel Evidence", desc: "Coincident radar point target contact" },
+    { id: "spatial-proximity", factor: "Spatial Proximity", desc: "Distance to probable release zone" },
+    { id: "temporal-correlation", factor: "Temporal Correlation", desc: "Presence during estimated release window" },
+    { id: "trajectory-alignment", factor: "Trajectory Alignment", desc: "Heading & course vector intersection" },
+    { id: "speed-course-consistency", factor: "Speed / Course Consistency", desc: "Hydrodynamic displacement match" },
+    { id: "behavioural-evidence", factor: "Behavioural Evidence", desc: "Loitering, speed changes, route shifts" },
+    { id: "ais-continuity-gaps", factor: "AIS Continuity / Gaps", desc: "Transponder transmission gaps" },
+    { id: "sar-vessel-evidence", factor: "SAR Vessel Evidence", desc: "Coincident radar point target contact" },
   ];
 
   const attributionState = [
@@ -44,9 +44,8 @@ export default function VesselAttribution() {
         <span className={styles.matrixHeading}>7-Factor Evidence Synthesis Stack</span>
         <div className={styles.factorsGrid}>
           {evidenceStack.map((item) => (
-            <div key={item.num} className={styles.factorItem}>
+            <div key={item.id} className={styles.factorItem}>
               <div className={styles.factorTop}>
-                <span className={styles.factorNum}>{item.num}</span>
                 <span className={styles.factorState}>Pending</span>
               </div>
               <span className={styles.factorName}>{item.factor}</span>
@@ -58,8 +57,8 @@ export default function VesselAttribution() {
 
       {/* Attribution Current Status Summary */}
       <div className={styles.summaryGrid}>
-        {attributionState.map((state, idx) => (
-          <div key={idx} className={styles.summaryItem}>
+        {attributionState.map((state) => (
+          <div key={state.label} className={styles.summaryItem}>
             <span className={styles.summaryKey}>{state.label}</span>
             <span className={styles.summaryVal}>{state.value}</span>
           </div>

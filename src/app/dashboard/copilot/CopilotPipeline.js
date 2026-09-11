@@ -5,8 +5,8 @@ import styles from "./CopilotPipeline.module.css";
 /**
  * CopilotPipeline
  *
- * 7-stage Grounded Copilot synthesis pipeline for #11 AI Copilot:
- * 01 User Question → 02 Investigation Context → 03 Evidence Retrieval → 04 Tool Analysis → 05 Evidence Synthesis → 06 Grounded Response → 07 Evidence References
+ * Grounded Copilot synthesis pipeline for AI Copilot:
+ * User Question → Investigation Context → Evidence Retrieval → Tool Analysis → Evidence Synthesis → Grounded Response → Evidence References
  *
  * Strict operational product truth:
  * - All stages in truthful "Awaiting" / "Standby" states
@@ -14,13 +14,13 @@ import styles from "./CopilotPipeline.module.css";
  */
 export default function CopilotPipeline() {
   const stages = [
-    { num: "01", name: "User Question", state: "Awaiting input" },
-    { num: "02", name: "Investigation Context", state: "Awaiting investigation" },
-    { num: "03", name: "Evidence Retrieval", state: "Standby" },
-    { num: "04", name: "Tool Analysis", state: "Standby" },
-    { num: "05", name: "Evidence Synthesis", state: "Standby" },
-    { num: "06", name: "Grounded Response", state: "Standby" },
-    { num: "07", name: "Evidence References", state: "Standby" },
+    { id: "user-question", name: "User Question", state: "Awaiting input" },
+    { id: "investigation-context", name: "Investigation Context", state: "Awaiting investigation" },
+    { id: "evidence-retrieval", name: "Evidence Retrieval", state: "Standby" },
+    { id: "tool-analysis", name: "Tool Analysis", state: "Standby" },
+    { id: "evidence-synthesis", name: "Evidence Synthesis", state: "Standby" },
+    { id: "grounded-response", name: "Grounded Response", state: "Standby" },
+    { id: "evidence-references", name: "Evidence References", state: "Standby" },
   ];
 
   return (
@@ -38,10 +38,9 @@ export default function CopilotPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

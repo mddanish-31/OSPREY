@@ -6,7 +6,7 @@ import styles from "./ReportBuilder.module.css";
 /**
  * ReportBuilder
  *
- * Report configuration & compilation controls for #12 Investigation Reports.
+ * Report configuration & compilation controls for Investigation Reports.
  *
  * Strict operational product truth:
  * - All configuration fields in truthful standby / ungenerated states

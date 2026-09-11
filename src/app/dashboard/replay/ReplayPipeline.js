@@ -5,8 +5,8 @@ import styles from "./ReplayPipeline.module.css";
 /**
  * ReplayPipeline
  *
- * 7-stage Incident Replay & Scenario Simulation Pipeline for #13 Incident Replay:
- * 01 Investigation Context → 02 Temporal Evidence → 03 Spatial Evidence → 04 Vessel & Environmental Alignment → 05 Baseline Reconstruction → 06 Scenario Simulation → 07 Comparative Assessment
+ * 7-stage Incident Replay & Scenario Simulation Pipeline for Incident Replay:
+ * Investigation Context → Temporal Evidence → Spatial Evidence → Alignment → Baseline Reconstruction → Scenario Simulation → Comparative Assessment
  *
  * Strict operational product truth:
  * - All stages in truthful "Awaiting Investigation" standby state
@@ -14,13 +14,13 @@ import styles from "./ReplayPipeline.module.css";
  */
 export default function ReplayPipeline() {
   const stages = [
-    { num: "01", name: "Investigation Context", state: "Awaiting Investigation" },
-    { num: "02", name: "Temporal Evidence", state: "Awaiting Investigation" },
-    { num: "03", name: "Spatial Evidence", state: "Awaiting Investigation" },
-    { num: "04", name: "Alignment", state: "Awaiting Investigation" },
-    { num: "05", name: "Baseline Reconstruction", state: "Awaiting Investigation" },
-    { num: "06", name: "Scenario Simulation", state: "Awaiting Investigation" },
-    { num: "07", name: "Comparative Assessment", state: "Awaiting Investigation" },
+    { id: "investigation-context", name: "Investigation Context", state: "Awaiting Investigation" },
+    { id: "temporal-evidence", name: "Temporal Evidence", state: "Awaiting Investigation" },
+    { id: "spatial-evidence", name: "Spatial Evidence", state: "Awaiting Investigation" },
+    { id: "alignment", name: "Alignment", state: "Awaiting Investigation" },
+    { id: "baseline-reconstruction", name: "Baseline Reconstruction", state: "Awaiting Investigation" },
+    { id: "scenario-simulation", name: "Scenario Simulation", state: "Awaiting Investigation" },
+    { id: "comparative-assessment", name: "Comparative Assessment", state: "Awaiting Investigation" },
   ];
 
   return (
@@ -38,10 +38,9 @@ export default function ReplayPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

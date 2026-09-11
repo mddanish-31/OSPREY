@@ -5,7 +5,7 @@ import styles from "./CopilotEvidenceReferences.module.css";
 /**
  * CopilotEvidenceReferences
  *
- * Grounded evidence citation area for #11 AI Copilot.
+ * Grounded evidence citation area for AI Copilot.
  * Prepares the schema to cite upstream investigation outputs without displaying fabricated citations.
  * Strict scientific product truth:
  * - State: "No evidence references available"

@@ -48,14 +48,6 @@
   box-shadow: 0 0 8px #38bdf8;
 }
 
-.badgeNumber {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
-  letter-spacing: 0.05em;
-}
-
 .badgeCategory {
   font-family: var(--font-mono, monospace);
   font-size: 0.62rem;
@@ -78,17 +70,6 @@
   color: #ffffff;
   letter-spacing: -0.02em;
   margin: 0;
-}
-
-.capabilityBadge {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  padding: 0.15rem 0.45rem;
-  border-radius: 0.35rem;
 }
 
 .headerRight {

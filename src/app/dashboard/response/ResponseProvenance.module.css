@@ -83,13 +83,6 @@
   min-width: 120px;
 }
 
-.stepNum {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
 .stepName {
   font-family: var(--font-sans);
   font-size: 0.68rem;

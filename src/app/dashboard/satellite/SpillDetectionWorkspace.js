@@ -10,7 +10,7 @@ import styles from "./SpillDetectionWorkspace.module.css";
 /**
  * SpillDetectionWorkspace
  *
- * Primary orchestrator for capability #3: AI Spill Detection.
+ * Primary orchestrator for AI Spill Detection.
  * Assembles:
  * - SpillDetectionViewport (central segmentation viewport with disabled action controls)
  * - DetectionModelPanel (factual model architecture and data requirements)
@@ -26,13 +26,11 @@ export default function SpillDetectionWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>03</span>
             <span className={styles.badgeCategory}>SATELLITE INTELLIGENCE</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>AI Spill Detection</h2>
-            <span className={styles.capabilityBadge}>#3</span>
           </div>
         </div>
 

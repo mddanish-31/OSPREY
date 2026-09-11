@@ -5,9 +5,9 @@ import styles from "./EvidenceChain.module.css";
 /**
  * EvidenceChain
  *
- * Visual centerpiece panel for #8 Evidence & Explainability.
- * Displays the 7-stage multi-source investigation progression:
- * 01 Detection → 02 Geometry → 03 Origin → 04 AIS → 05 Behaviour → 06 Cross-Sensor → 07 Association
+ * Visual centerpiece panel for Evidence & Explainability.
+ * Displays the multi-source investigation progression:
+ * Detection → Geometry → Origin → AIS → Behaviour → Cross-Sensor → Association
  *
  * Strict product truth:
  * - All nodes in truthful awaiting/pending standby states
@@ -17,43 +17,43 @@ import styles from "./EvidenceChain.module.css";
 export default function EvidenceChain() {
   const chainNodes = [
     {
-      num: "01",
+      id: "sar-scene-input",
       name: "Detection",
       source: "Sentinel-1 SAR",
       state: "Awaiting model output",
     },
     {
-      num: "02",
+      id: "slick-segmentation",
       name: "Geometry",
       source: "Spatial Polygon",
       state: "Awaiting candidate geometry",
     },
     {
-      num: "03",
+      id: "origin-reconstruction",
       name: "Origin",
       source: "Lagrangian Drift",
       state: "Awaiting drift reconstruction",
     },
     {
-      num: "04",
+      id: "ais-candidate-matching",
       name: "AIS",
       source: "Vessel Transponder",
       state: "Awaiting vessel correlation",
     },
     {
-      num: "05",
+      id: "behavioural-scoring",
       name: "Behaviour",
       source: "Historical Baseline",
       state: "Awaiting behavioural analysis",
     },
     {
-      num: "06",
+      id: "radar-point-target-fusion",
       name: "Cross-Sensor",
       source: "Radar / AIS Match",
       state: "Awaiting SAR/AIS comparison",
     },
     {
-      num: "07",
+      id: "attribution-synthesis",
       name: "Association",
       source: "7-Factor Synthesis",
       state: "Awaiting evidence synthesis",
@@ -133,10 +133,9 @@ export default function EvidenceChain() {
       <div className={styles.chainTrackContainer}>
         <div className={styles.chainTrack}>
           {chainNodes.map((node, idx) => (
-            <div key={node.num} className={styles.nodeWrapper}>
+            <div key={node.id} className={styles.nodeWrapper}>
               <div className={styles.nodeCard}>
                 <div className={styles.nodeTop}>
-                  <span className={styles.nodeNum}>{node.num}</span>
                   <span className={styles.nodeStateBadge}>{node.state}</span>
                 </div>
                 <h4 className={styles.nodeName}>{node.name}</h4>

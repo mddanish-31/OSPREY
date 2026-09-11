@@ -5,8 +5,8 @@ import styles from "./RiskPipeline.module.css";
 /**
  * RiskPipeline
  *
- * 8-stage Environmental Risk synthesis pipeline for #9 Environmental Risk & Impact:
- * 01 Spill Geometry → 02 Drift Projection → 03 Affected Area → 04 Coastal Exposure → 05 Sensitive Areas → 06 Fisheries Exposure → 07 Risk Assessment → 08 Impact Interpretation
+ * Environmental Risk synthesis pipeline for Environmental Risk & Impact:
+ * Spill Geometry → Drift Projection → Affected Area → Coastal Exposure → Sensitive Areas → Fisheries Exposure → Risk Assessment → Impact Interpretation
  *
  * Strict scientific product truth:
  * - All stages in truthful "Awaiting" standby states
@@ -14,14 +14,14 @@ import styles from "./RiskPipeline.module.css";
  */
 export default function RiskPipeline() {
   const stages = [
-    { num: "01", name: "Spill Geometry", state: "Awaiting candidate geometry" },
-    { num: "02", name: "Drift Projection", state: "Awaiting simulation" },
-    { num: "03", name: "Affected Area", state: "Awaiting projected extent" },
-    { num: "04", name: "Coastal Exposure", state: "Awaiting coastal layer" },
-    { num: "05", name: "Sensitive Areas", state: "Awaiting environmental layers" },
-    { num: "06", name: "Fisheries Exposure", state: "Awaiting fisheries data" },
-    { num: "07", name: "Risk Assessment", state: "Awaiting exposure evidence" },
-    { num: "08", name: "Impact Interpretation", state: "Awaiting risk analysis" },
+    { id: "spill-geometry", name: "Spill Geometry", state: "Awaiting candidate geometry" },
+    { id: "drift-projection", name: "Drift Projection", state: "Awaiting simulation" },
+    { id: "affected-area", name: "Affected Area", state: "Awaiting projected extent" },
+    { id: "coastal-exposure", name: "Coastal Exposure", state: "Awaiting coastal layer" },
+    { id: "sensitive-areas", name: "Sensitive Areas", state: "Awaiting environmental layers" },
+    { id: "fisheries-exposure", name: "Fisheries Exposure", state: "Awaiting fisheries data" },
+    { id: "risk-assessment", name: "Risk Assessment", state: "Awaiting exposure evidence" },
+    { id: "impact-interpretation", name: "Impact Interpretation", state: "Awaiting risk analysis" },
   ];
 
   return (
@@ -39,10 +39,9 @@ export default function RiskPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

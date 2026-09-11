@@ -6,17 +6,17 @@ import styles from "./CrossCheckPipeline.module.css";
  * CrossCheckPipeline
  *
  * 5-stage Sentinel-2 optical cross-check processing pipeline:
- * 01 SAR Candidate → 02 Optical Scene Acquisition → 03 Scene Usability Check → 04 SAR / Optical Cross-check → 05 Cross-check Interpretation
+ * SAR Candidate → Optical Scene Acquisition → Scene Usability Check → SAR / Optical Cross-check → Cross-check Interpretation
  *
  * Current state: All stages in truthful data-ready/standby states.
  */
 export default function CrossCheckPipeline() {
   const stages = [
-    { num: "01", name: "SAR Candidate", desc: "Candidate slick polygon ingestion", state: "Awaiting candidate geometry" },
-    { num: "02", name: "Optical Acquisition", desc: "Sentinel-2 MSI daylight observation query", state: "Awaiting Sentinel-2 scene" },
-    { num: "03", name: "Scene Usability", desc: "Cloud cover & atmospheric quality screening", state: "Awaiting optical metadata" },
-    { num: "04", name: "SAR / Optical Cross-check", desc: "Multispectral surface reflectance comparison", state: "Awaiting compatible observations" },
-    { num: "05", name: "Cross-check Interpretation", desc: "Multi-sensor consistency synthesis", state: "Awaiting cross-check evidence" },
+    { id: "sar-candidate", name: "SAR Candidate", desc: "Candidate slick polygon ingestion", state: "Awaiting candidate geometry" },
+    { id: "optical-acquisition", name: "Optical Acquisition", desc: "Sentinel-2 MSI daylight observation query", state: "Awaiting Sentinel-2 scene" },
+    { id: "scene-usability", name: "Scene Usability", desc: "Cloud cover & atmospheric quality screening", state: "Awaiting optical metadata" },
+    { id: "sar-optical-cross-check", name: "SAR / Optical Cross-check", desc: "Multispectral surface reflectance comparison", state: "Awaiting compatible observations" },
+    { id: "cross-check-interpretation", name: "Cross-check Interpretation", desc: "Multi-sensor consistency synthesis", state: "Awaiting cross-check evidence" },
   ];
 
   return (
@@ -34,10 +34,9 @@ export default function CrossCheckPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

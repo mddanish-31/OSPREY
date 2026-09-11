@@ -12,9 +12,9 @@ import styles from "./ReportsWorkspace.module.css";
 /**
  * ReportsWorkspace
  *
- * Primary workspace orchestrator for Capability #12: Investigation Reports.
+ * Primary workspace orchestrator for Investigation Reports.
  * Assembles:
- * - Header: 12 // INVESTIGATION REPORTS, DATA STANDBY, Awaiting Investigation Context
+ * - Header: INVESTIGATION REPORTS, DATA STANDBY, Awaiting Investigation Context
  * - Subtitle Banner: Compile verified investigation evidence into a structured operational report.
  * - ReportBuilder: Configuration panel with report types & disabled compilation controls
  * - ReportPreview: Conceptual document preview canvas with disabled export controls
@@ -22,18 +22,18 @@ import styles from "./ReportsWorkspace.module.css";
  * - ReportEvidenceIndex: 8-category evidence compilation index in standby
  * - ReportPipeline: 7-stage report generation lifecycle pipeline in standby
  * - ReportSummary: Operational synthesis assessment in truthful standby
- * - ReportProvenance: Multi-source evidence lineage connecting #3 → #4 → #6 → #7 → #8 → #9 → #10 → #12
+ * - ReportProvenance: Multi-source evidence lineage across detection, characterization, drift, vessel intelligence, explainability, risk, and response
  */
 export default function ReportsWorkspace() {
   const reportWorkflowChain = [
-    { name: "Scene Ingestion" },
-    { name: "Detection" },
-    { name: "Origin Drift" },
-    { name: "Vessel AIS" },
-    { name: "Explainability" },
-    { name: "Environmental Risk" },
-    { name: "Response" },
-    { name: "Report Compilation" },
+    { id: "scene-ingestion", name: "Scene Ingestion" },
+    { id: "detection", name: "Detection" },
+    { id: "origin-drift", name: "Origin Drift" },
+    { id: "vessel-ais", name: "Vessel AIS" },
+    { id: "explainability", name: "Explainability" },
+    { id: "environmental-risk", name: "Environmental Risk" },
+    { id: "response", name: "Response" },
+    { id: "report-compilation", name: "Report Compilation" },
   ];
 
   return (
@@ -43,13 +43,11 @@ export default function ReportsWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>12</span>
             <span className={styles.badgeCategory}>INVESTIGATION REPORTS</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Investigation Reports</h2>
-            <span className={styles.capabilityBadge}>#12</span>
           </div>
         </div>
 
@@ -75,7 +73,7 @@ export default function ReportsWorkspace() {
         </div>
         <div className={styles.workflowTrack}>
           {reportWorkflowChain.map((step, idx) => (
-            <div key={idx} className={styles.workflowItem}>
+            <div key={step.id} className={styles.workflowItem}>
               <div className={styles.stepBox}>
                 <span className={styles.stepName}>{step.name}</span>
               </div>

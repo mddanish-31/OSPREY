@@ -14,9 +14,9 @@ import styles from "./IncidentReplayWorkspace.module.css";
 /**
  * IncidentReplayWorkspace
  *
- * Primary workspace orchestrator for Capability #13: Incident Replay / What-if Simulation.
+ * Primary workspace orchestrator for Incident Replay / What-if Simulation.
  * Assembles:
- * - Header: 13 // INCIDENT REPLAY, DATA STANDBY, Awaiting Investigation Context
+ * - Header: INCIDENT REPLAY, DATA STANDBY, Awaiting Investigation Context
  * - Dependency Chain: Investigation → Spill Geometry → Origin Reconstruction → AIS Timeline → Environmental Forcing → Incident Replay → What-if Simulation
  * - Future Action Bar: Load Investigation, Start Replay, Run Baseline, Create Scenario, Run Scenario, Compare Results, Reset
  * - ReplayMapViewer: Central geographic replay viewport with reticles
@@ -25,17 +25,17 @@ import styles from "./IncidentReplayWorkspace.module.css";
  * - WhatIfScenario & ScenarioParameters: Counterfactual scenario builder and parameter matrix
  * - ScenarioComparison: Baseline vs Scenario comparative matrix
  * - ReplayPipeline: 7-stage simulation lifecycle in standby
- * - ReplayProvenance: Multi-source lineage connecting #3 → #4 → #6 → #7 → #8 → #9 → #10 → #13 & scientific integrity notice
+ * - ReplayProvenance: Multi-source lineage across detection, characterization, drift, vessel intelligence, explainability, risk, response, and replay with scientific integrity notice
  */
 export default function IncidentReplayWorkspace() {
   const dependencyChain = [
-    { name: "Investigation" },
-    { name: "Spill Geometry" },
-    { name: "Origin Reconstruction" },
-    { name: "AIS Timeline" },
-    { name: "Environmental Forcing" },
-    { name: "Incident Replay" },
-    { name: "What-if Simulation" },
+    { id: "scene-ingestion", name: "Investigation" },
+    { id: "spill-geometry", name: "Spill Geometry" },
+    { id: "origin-reconstruction", name: "Origin Reconstruction" },
+    { id: "ais-timeline", name: "AIS Timeline" },
+    { id: "environmental-forcing", name: "Environmental Forcing" },
+    { id: "incident-replay", name: "Incident Replay" },
+    { id: "what-if-simulation", name: "What-if Simulation" },
   ];
 
   const futureActions = [
@@ -55,13 +55,11 @@ export default function IncidentReplayWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>13</span>
             <span className={styles.badgeCategory}>INCIDENT REPLAY</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Incident Replay</h2>
-            <span className={styles.capabilityBadge}>#13</span>
           </div>
         </div>
 
@@ -87,7 +85,7 @@ export default function IncidentReplayWorkspace() {
         </div>
         <div className={styles.dependencyTrack}>
           {dependencyChain.map((step, idx) => (
-            <div key={idx} className={styles.depItem}>
+            <div key={step.id} className={styles.depItem}>
               <div className={styles.stepBox}>
                 <span className={styles.stepName}>{step.name}</span>
               </div>
@@ -104,7 +102,7 @@ export default function IncidentReplayWorkspace() {
         <div className={styles.actionButtonsRow}>
           {futureActions.map((action, idx) => (
             <button
-              key={idx}
+              key={action.label}
               type="button"
               className={`${styles.actionBtn} ${idx === 0 ? styles.primaryActionBtn : ""}`}
               disabled

@@ -5,8 +5,8 @@ import styles from "./EvidencePipeline.module.css";
 /**
  * EvidencePipeline
  *
- * 8-stage Evidence Synthesis processing pipeline:
- * 01 Detection Evidence → 02 Geometry Evidence → 03 Origin Evidence → 04 AIS Evidence → 05 Behavioural Evidence → 06 Cross-Sensor Evidence → 07 Evidence Synthesis → 08 Explainable Association
+ * Evidence Synthesis processing pipeline:
+ * Detection Evidence → Geometry Evidence → Origin Evidence → AIS Evidence → Behavioural Evidence → Cross-Sensor Evidence → Evidence Synthesis → Explainable Association
  *
  * Conforms strictly to product truth:
  * - All stages in truthful awaiting/pending standby states
@@ -15,49 +15,49 @@ import styles from "./EvidencePipeline.module.css";
 export default function EvidencePipeline() {
   const stages = [
     {
-      num: "01",
+      id: "detection-evidence",
       name: "Detection Evidence",
       desc: "SAR slick segmentation confidence & dark patch mask",
       state: "Awaiting model output",
     },
     {
-      num: "02",
+      id: "geometry-evidence",
       name: "Geometry Evidence",
       desc: "Polygon spatial centroid & boundary characterization",
       state: "Awaiting candidate geometry",
     },
     {
-      num: "03",
+      id: "origin-evidence",
       name: "Origin Evidence",
       desc: "Lagrangian backward trajectory probable release zone",
       state: "Awaiting reconstruction",
     },
     {
-      num: "04",
+      id: "ais-evidence",
       name: "AIS Evidence",
       desc: "Spatiotemporal track proximity & candidate vessel set",
       state: "Awaiting AIS correlation",
     },
     {
-      num: "05",
+      id: "behavioural-evidence",
       name: "Behavioural Evidence",
       desc: "Operational anomalies, loitering & broadcast gap profiling",
       state: "Awaiting analysis",
     },
     {
-      num: "06",
+      id: "cross-sensor-evidence",
       name: "Cross-Sensor Evidence",
       desc: "Non-broadcasting radar contact cross-matching",
       state: "Awaiting SAR/AIS comparison",
     },
     {
-      num: "07",
+      id: "evidence-synthesis",
       name: "Evidence Synthesis",
       desc: "7-factor transparent multi-source weighting",
       state: "Awaiting source evidence",
     },
     {
-      num: "08",
+      id: "explainable-association",
       name: "Explainable Association",
       desc: "Auditable investigation dossier & association summary",
       state: "Awaiting synthesis",
@@ -79,10 +79,9 @@ export default function EvidencePipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

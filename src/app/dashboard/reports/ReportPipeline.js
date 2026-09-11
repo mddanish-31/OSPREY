@@ -5,8 +5,8 @@ import styles from "./ReportPipeline.module.css";
 /**
  * ReportPipeline
  *
- * 7-stage Report Generation Pipeline for #12 Investigation Reports:
- * 01 Investigation Context → 02 Evidence Collection → 03 Evidence Validation → 04 Report Structuring → 05 Evidence Referencing → 06 Report Review → 07 Final Report
+ * 7-stage Report Generation Pipeline for Investigation Reports:
+ * Investigation Context → Evidence Collection → Evidence Validation → Report Structuring → Evidence Referencing → Report Review → Final Report
  *
  * Strict operational product truth:
  * - All stages in truthful "Awaiting Investigation" standby state
@@ -14,13 +14,13 @@ import styles from "./ReportPipeline.module.css";
  */
 export default function ReportPipeline() {
   const stages = [
-    { num: "01", name: "Investigation Context", state: "Awaiting Investigation" },
-    { num: "02", name: "Evidence Collection", state: "Awaiting Investigation" },
-    { num: "03", name: "Evidence Validation", state: "Awaiting Investigation" },
-    { num: "04", name: "Report Structuring", state: "Awaiting Investigation" },
-    { num: "05", name: "Evidence Referencing", state: "Awaiting Investigation" },
-    { num: "06", name: "Report Review", state: "Awaiting Investigation" },
-    { num: "07", name: "Final Report", state: "Awaiting Investigation" },
+    { id: "investigation-context", name: "Investigation Context", state: "Awaiting Investigation" },
+    { id: "evidence-collection", name: "Evidence Collection", state: "Awaiting Investigation" },
+    { id: "evidence-validation", name: "Evidence Validation", state: "Awaiting Investigation" },
+    { id: "report-structuring", name: "Report Structuring", state: "Awaiting Investigation" },
+    { id: "evidence-referencing", name: "Evidence Referencing", state: "Awaiting Investigation" },
+    { id: "report-review", name: "Report Review", state: "Awaiting Investigation" },
+    { id: "final-report", name: "Final Report", state: "Awaiting Investigation" },
   ];
 
   return (
@@ -38,10 +38,9 @@ export default function ReportPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

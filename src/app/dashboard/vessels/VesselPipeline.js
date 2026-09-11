@@ -5,8 +5,8 @@ import styles from "./VesselPipeline.module.css";
 /**
  * VesselPipeline
  *
- * 7-stage Vessel Intelligence & AIS Correlation processing sequence:
- * 01 Investigation Context → 02 AIS History → 03 Temporal Filtering → 04 Spatial Correlation → 05 Behavioural Analysis → 06 Dark Vessel Cross-check → 07 Explainable Attribution
+ * Vessel Intelligence & AIS Correlation processing sequence:
+ * Investigation Context → AIS History → Temporal Filtering → Spatial Correlation → Behavioural Analysis → Dark Vessel Cross-check → Explainable Attribution
  *
  * Conforms strictly to product truth:
  * - All stages in truthful standby/awaiting states
@@ -15,43 +15,43 @@ import styles from "./VesselPipeline.module.css";
 export default function VesselPipeline() {
   const stages = [
     {
-      num: "01",
+      id: "investigation-context",
       name: "Investigation Context",
-      desc: "Spatiotemporal bounds from #6 Drift reconstruction",
+      desc: "Spatiotemporal bounds from Drift reconstruction",
       state: "Awaiting origin zone",
     },
     {
-      num: "02",
+      id: "ais-history",
       name: "AIS History",
       desc: "Terrestrial & satellite AIS broadcast ingestion",
       state: "Awaiting AIS dataset",
     },
     {
-      num: "03",
+      id: "temporal-filtering",
       name: "Temporal Filtering",
       desc: "Time-window slicing around estimated release epoch",
       state: "Awaiting AIS history",
     },
     {
-      num: "04",
+      id: "spatial-correlation",
       name: "Spatial Correlation",
       desc: "Origin zone proximity & trajectory intersection",
       state: "Awaiting candidate positions",
     },
     {
-      num: "05",
+      id: "behavioural-analysis",
       name: "Behavioural Analysis",
       desc: "Speed anomalies, loitering & broadcast gap profiling",
       state: "Awaiting vessel history",
     },
     {
-      num: "06",
+      id: "dark-vessel-cross-check",
       name: "Dark Vessel Cross-check",
       desc: "SAR non-cooperative radar contact matching",
       state: "Awaiting SAR vessel analysis",
     },
     {
-      num: "07",
+      id: "explainable-attribution",
       name: "Explainable Attribution",
       desc: "Multi-factor evidence synthesis & candidate ranking",
       state: "Awaiting correlation evidence",
@@ -73,10 +73,9 @@ export default function VesselPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

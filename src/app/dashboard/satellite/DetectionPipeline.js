@@ -6,17 +6,17 @@ import styles from "./DetectionPipeline.module.css";
  * DetectionPipeline
  *
  * 5-stage SAR segmentation processing pipeline representation:
- * 01 SAR Preprocessing → 02 Candidate Anomaly Detection → 03 Candidate Segmentation → 04 Look-alike Filtering → 05 Spill Interpretation
+ * SAR Preprocessing → Candidate Anomaly Detection → Candidate Segmentation → Look-alike Filtering → Spill Interpretation
  *
  * Current state: All stages in "Awaiting SAR Scene" / prerequisite state.
  */
 export default function DetectionPipeline() {
   const stages = [
-    { num: "01", name: "SAR Preprocessing", desc: "Radiometric calibration & speckle filtering", state: "Awaiting SAR Scene" },
-    { num: "02", name: "Candidate Anomaly Detection", desc: "Surface dampening anomaly screening", state: "Awaiting SAR Scene" },
-    { num: "03", name: "Candidate Segmentation", desc: "Deep feature spatial mask extraction", state: "Awaiting SAR Scene" },
-    { num: "04", name: "Look-alike Filtering", desc: "Low-wind & biogenic feature discrimination", state: "Awaiting SAR Scene" },
-    { num: "05", name: "Spill Interpretation", desc: "Candidate confidence & geometry synthesis", state: "Awaiting SAR Scene" },
+    { id: "sar-preprocessing", name: "SAR Preprocessing", desc: "Radiometric calibration & speckle filtering", state: "Awaiting SAR Scene" },
+    { id: "candidate-anomaly-detection", name: "Candidate Anomaly Detection", desc: "Surface dampening anomaly screening", state: "Awaiting SAR Scene" },
+    { id: "candidate-segmentation", name: "Candidate Segmentation", desc: "Deep feature spatial mask extraction", state: "Awaiting SAR Scene" },
+    { id: "look-alike-filtering", name: "Look-alike Filtering", desc: "Low-wind & biogenic feature discrimination", state: "Awaiting SAR Scene" },
+    { id: "spill-interpretation", name: "Spill Interpretation", desc: "Candidate confidence & geometry synthesis", state: "Awaiting SAR Scene" },
   ];
 
   return (
@@ -34,10 +34,9 @@ export default function DetectionPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

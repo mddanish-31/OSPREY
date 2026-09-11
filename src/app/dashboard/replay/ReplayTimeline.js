@@ -5,7 +5,7 @@ import styles from "./ReplayTimeline.module.css";
 /**
  * ReplayTimeline
  *
- * Temporal investigation playback scrubber & event stream panel for #13 Incident Replay.
+ * Temporal investigation playback scrubber & event stream panel for Incident Replay.
  *
  * Strict operational product truth:
  * - Timeline state: "Awaiting temporal evidence"
@@ -23,13 +23,13 @@ export default function ReplayTimeline() {
   ];
 
   const eventCategories = [
-    { num: "01", name: "Satellite Observation", state: "Awaiting event data" },
-    { num: "02", name: "Spill Detection", state: "Awaiting event data" },
-    { num: "03", name: "Origin Window", state: "Awaiting event data" },
-    { num: "04", name: "Vessel Activity", state: "Awaiting event data" },
-    { num: "05", name: "Environmental Forcing", state: "Awaiting event data" },
-    { num: "06", name: "Drift Reconstruction", state: "Awaiting event data" },
-    { num: "07", name: "Investigation Assessment", state: "Awaiting event data" },
+    { id: "satellite-observation", name: "Satellite Observation", state: "Awaiting event data" },
+    { id: "spill-detection", name: "Spill Detection", state: "Awaiting event data" },
+    { id: "origin-window", name: "Origin Window", state: "Awaiting event data" },
+    { id: "vessel-activity", name: "Vessel Activity", state: "Awaiting event data" },
+    { id: "environmental-forcing", name: "Environmental Forcing", state: "Awaiting event data" },
+    { id: "drift-reconstruction", name: "Drift Reconstruction", state: "Awaiting event data" },
+    { id: "investigation-assessment", name: "Investigation Assessment", state: "Awaiting event data" },
   ];
 
   return (
@@ -80,9 +80,8 @@ export default function ReplayTimeline() {
         <span className={styles.sectionLabel}>Timeline Event Streams</span>
         <div className={styles.categoriesTrack}>
           {eventCategories.map((cat) => (
-            <div key={cat.num} className={styles.categoryItem}>
+            <div key={cat.id} className={styles.categoryItem}>
               <div className={styles.catTop}>
-                <span className={styles.catNum}>{cat.num}</span>
                 <span className={styles.catState}>{cat.state}</span>
               </div>
               <span className={styles.catName}>{cat.name}</span>

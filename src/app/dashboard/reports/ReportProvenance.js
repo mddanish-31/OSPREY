@@ -5,12 +5,12 @@ import styles from "./ReportProvenance.module.css";
 /**
  * ReportProvenance
  *
- * Lineage & Multi-Source Provenance panel for #12 Investigation Reports.
+ * Lineage & Multi-Source Provenance panel for Investigation Reports.
  * Transparently indicates upstream evidence source lineage and report compiler state.
  *
  * Strict operational product truth:
  * - All parameters in "Not loaded" / "Awaiting" / "Standby" states
- * - Lineage connecting #3 → #4 → #6 → #7 → #8 → #9 → #10 → #12
+ * - Lineage across spill detection, characterization, drift, vessel intelligence, explainability, environmental risk, response intelligence, and investigation report
  */
 export default function ReportProvenance() {
   const provenanceItems = [
@@ -23,14 +23,14 @@ export default function ReportProvenance() {
   ];
 
   const lineageNodes = [
-    { num: "#3", name: "AI Spill Detection" },
-    { num: "#4", name: "Spill Characterization" },
-    { num: "#6", name: "Drift & Ocean Dynamics" },
-    { num: "#7", name: "Vessel Intelligence" },
-    { num: "#8", name: "Evidence & Explainability" },
-    { num: "#9", name: "Environmental Risk" },
-    { num: "#10", name: "Response Intelligence" },
-    { num: "#12", name: "Investigation Report" },
+    { id: "spill-detection", name: "AI Spill Detection" },
+    { id: "spill-characterization", name: "Spill Characterization" },
+    { id: "drift-ocean", name: "Drift & Ocean Dynamics" },
+    { id: "vessel-intelligence", name: "Vessel Intelligence" },
+    { id: "evidence-explainability", name: "Evidence & Explainability" },
+    { id: "environmental-risk", name: "Environmental Risk" },
+    { id: "response-intelligence", name: "Response Intelligence" },
+    { id: "investigation-report", name: "Investigation Report" },
   ];
 
   return (
@@ -48,13 +48,12 @@ export default function ReportProvenance() {
         <span className={styles.lineageLabel}>Conceptual Evidence Ingestion Chain</span>
         <div className={styles.lineageTrack}>
           {lineageNodes.map((node, idx) => (
-            <div key={idx} className={styles.lineageNodeWrapper}>
+            <div key={node.id} className={styles.lineageNodeWrapper}>
               <div
                 className={`${styles.lineageNode} ${
                   idx === lineageNodes.length - 1 ? styles.targetNode : ""
                 }`}
               >
-                <span className={styles.nodeNum}>{node.num}</span>
                 <span className={styles.nodeName}>{node.name}</span>
               </div>
               {idx < lineageNodes.length - 1 && (
@@ -67,8 +66,8 @@ export default function ReportProvenance() {
 
       {/* Key-Value Parameters Grid */}
       <div className={styles.provenanceGrid}>
-        {provenanceItems.map((item, idx) => (
-          <div key={idx} className={styles.provenanceItem}>
+        {provenanceItems.map((item) => (
+          <div key={item.label} className={styles.provenanceItem}>
             <span className={styles.itemKey}>{item.label}</span>
             <span className={styles.itemVal}>{item.value}</span>
           </div>

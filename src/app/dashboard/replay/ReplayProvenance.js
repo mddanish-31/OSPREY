@@ -5,10 +5,10 @@ import styles from "./ReplayProvenance.module.css";
 /**
  * ReplayProvenance
  *
- * Lineage, Provenance & Scientific Integrity panel for #13 Incident Replay.
+ * Lineage, Provenance & Scientific Integrity panel for Incident Replay.
  *
  * Strict operational product truth:
- * - Lineage connecting #3 → #4 → #6 → #7 → #8 → #9 → #10 → #13
+ * - Lineage across spill detection, characterization, drift, vessel intelligence, explainability, environmental risk, response intelligence, and incident replay
  * - All provenance parameters in truthful standby / awaiting states
  * - Clear scientific integrity notice (simulations vs observations)
  */
@@ -25,14 +25,14 @@ export default function ReplayProvenance() {
   ];
 
   const lineageNodes = [
-    { num: "#3", name: "AI Spill Detection" },
-    { num: "#4", name: "Spill Characterization" },
-    { num: "#6", name: "Drift & Ocean Dynamics" },
-    { num: "#7", name: "Vessel Intelligence" },
-    { num: "#8", name: "Evidence & Explainability" },
-    { num: "#9", name: "Environmental Risk" },
-    { num: "#10", name: "Response Intelligence" },
-    { num: "#13", name: "Incident Replay" },
+    { id: "spill-detection", name: "AI Spill Detection" },
+    { id: "spill-characterization", name: "Spill Characterization" },
+    { id: "drift-ocean", name: "Drift & Ocean Dynamics" },
+    { id: "vessel-intelligence", name: "Vessel Intelligence" },
+    { id: "evidence-explainability", name: "Evidence & Explainability" },
+    { id: "environmental-risk", name: "Environmental Risk" },
+    { id: "response-intelligence", name: "Response Intelligence" },
+    { id: "incident-replay", name: "Incident Replay" },
   ];
 
   return (
@@ -50,13 +50,12 @@ export default function ReplayProvenance() {
         <span className={styles.lineageLabel}>Investigation Evidence Source Lineage</span>
         <div className={styles.lineageTrack}>
           {lineageNodes.map((node, idx) => (
-            <div key={idx} className={styles.lineageNodeWrapper}>
+            <div key={node.id} className={styles.lineageNodeWrapper}>
               <div
                 className={`${styles.lineageNode} ${
                   idx === lineageNodes.length - 1 ? styles.targetNode : ""
                 }`}
               >
-                <span className={styles.nodeNum}>{node.num}</span>
                 <span className={styles.nodeName}>{node.name}</span>
               </div>
               {idx < lineageNodes.length - 1 && (
@@ -69,8 +68,8 @@ export default function ReplayProvenance() {
 
       {/* Provenance Key-Value Grid */}
       <div className={styles.provenanceGrid}>
-        {provenanceItems.map((item, idx) => (
-          <div key={idx} className={styles.provenanceItem}>
+        {provenanceItems.map((item) => (
+          <div key={item.label} className={styles.provenanceItem}>
             <span className={styles.itemKey}>{item.label}</span>
             <span className={styles.itemVal}>{item.value}</span>
           </div>

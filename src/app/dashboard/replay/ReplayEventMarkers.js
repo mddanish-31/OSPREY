@@ -5,7 +5,7 @@ import styles from "./ReplayEventMarkers.module.css";
 /**
  * ReplayEventMarkers
  *
- * Event marker taxonomy & legend panel for #13 Incident Replay.
+ * Event marker taxonomy & legend panel for Incident Replay.
  * Defines the spatiotemporal event classes available during temporal playback.
  *
  * Strict operational product truth:

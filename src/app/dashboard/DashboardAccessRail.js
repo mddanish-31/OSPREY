@@ -143,7 +143,7 @@ export default function DashboardAccessRail({
                 type="button"
                 className={`${styles.railButton} ${isActive ? styles.railButtonActive : ""}`}
                 onClick={() => onSelectWorkspace(workspace.id)}
-                title={`${workspace.number} // ${workspace.label}`}
+                title={workspace.label}
                 aria-label={`Open ${workspace.label} workspace`}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -153,7 +153,6 @@ export default function DashboardAccessRail({
 
               {/* Hover Tooltip */}
               <div className={styles.tooltip}>
-                <span className={styles.tooltipNumber}>{workspace.number}</span>
                 <span className={styles.tooltipLabel}>{workspace.label}</span>
               </div>
             </div>
@@ -171,7 +170,6 @@ export default function DashboardAccessRail({
           {/* Header */}
           <div className={styles.contextHeader}>
             <div className={styles.contextTitleGroup}>
-              <span className={styles.contextNumber}>{currentWorkspaceObj.number}</span>
               <div>
                 <h3 className={styles.contextTitle}>{currentWorkspaceObj.label}</h3>
                 <span className={styles.contextSubtitle}>{currentWorkspaceObj.category}</span>
@@ -205,7 +203,6 @@ export default function DashboardAccessRail({
                   onClick={() => onSelectCapability(cap.id)}
                 >
                   <div className={styles.capTop}>
-                    <span className={styles.capNum}>#{cap.num}</span>
                     <span className={styles.capName}>{cap.name}</span>
                   </div>
                   <span className={styles.capDesc}>{cap.desc}</span>

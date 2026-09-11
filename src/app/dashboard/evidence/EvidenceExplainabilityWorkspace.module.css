@@ -53,13 +53,6 @@
   box-shadow: 0 0 6px #38bdf8;
 }
 
-.badgeNumber {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
 .badgeCategory {
   font-family: var(--font-mono);
   font-size: 0.62rem;
@@ -82,17 +75,6 @@
   color: #ffffff;
   letter-spacing: -0.01em;
   margin: 0;
-}
-
-.capabilityBadge {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
-  padding: 0.15rem 0.4rem;
-  border-radius: 0.3rem;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
 .headerRight {
@@ -195,13 +177,6 @@
   border-radius: 0.35rem;
   background: rgba(14, 38, 76, 0.45);
   border: 1px solid rgba(56, 189, 248, 0.15);
-}
-
-.stepNum {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  font-weight: 700;
-  color: #38bdf8;
 }
 
 .stepName {

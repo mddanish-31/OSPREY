@@ -5,11 +5,11 @@ import styles from "./SensitiveAreaAnalysis.module.css";
 /**
  * SensitiveAreaAnalysis
  *
- * Sensitive Marine Areas analysis panel for #9 Environmental Risk & Impact.
- * Displays potential future environmental layer bindings and current intersection state.
+ * Sensitive Marine Areas analysis panel for Environmental Risk & Impact.
+ * Evaluates Marine Protected Areas (MPAs), critical habitats, and ecological reserves against projected spill envelope.
  * Strict scientific product truth:
- * - Layers initialized to "Awaiting environmental layer"
- * - Zero fabricated protected area names, geometries, or overlap scores
+ * - Current fields initialized to truthful "Awaiting" and "Pending" states
+ * - Zero fabricated reserves, vulnerability ratings, or synthetic ecological layers
  */
 export default function SensitiveAreaAnalysis() {
   const futureLayers = [

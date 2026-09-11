@@ -5,11 +5,11 @@ import styles from "./ResponsePriorityMap.module.css";
 /**
  * ResponsePriorityMap
  *
- * Primary operational spatial viewport for #10 Response Intelligence.
- * Conforms strictly to operational & scientific product truth:
- * - Pure data-ready "Awaiting Response Context" state
- * - Zero fabricated emergency zones, response units, vessel deployments, or fake coordinates
- * - Action controls disabled with descriptive tooltips
+ * Primary operational spatial viewport for Response Intelligence.
+ * Strict operational product truth:
+ * - Pure data-ready "Awaiting Environmental Assessment" state
+ * - Zero fabricated incident response zones, boom placements, vessel icons, or fake coordinates
+ * - Action controls disabled with clear tooltip descriptions
  */
 export default function ResponsePriorityMap() {
   return (

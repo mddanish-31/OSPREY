@@ -6,14 +6,14 @@ import styles from "./CrossCheckProvenance.module.css";
  * CrossCheckProvenance
  *
  * Lineage panel detailing the full 4-stage Satellite Intelligence workflow:
- * #2 SAR Scene → #3 AI Spill Detection → #4 Spill Characterization → #5 Sentinel-2 Cross-check
+ * SAR Scene → AI Spill Detection → Spill Characterization → Sentinel-2 Cross-check
  */
 export default function CrossCheckProvenance() {
   const lineageSteps = [
-    { num: "#2", name: "SAR Scene", role: "Primary Sensor" },
-    { num: "#3", name: "AI Detection", role: "Segmentation" },
-    { num: "#4", name: "Characterization", role: "Spatial Polygon" },
-    { num: "#5", name: "Optical Check", role: "Conditional Validation" },
+    { id: "sar-scene", name: "SAR Scene", role: "Primary Sensor" },
+    { id: "spill-detection", name: "AI Detection", role: "Segmentation" },
+    { id: "spill-characterization", name: "Characterization", role: "Spatial Polygon" },
+    { id: "sentinel2-crosscheck", name: "Optical Check", role: "Conditional Validation" },
   ];
 
   const provenanceItems = [
@@ -36,9 +36,8 @@ export default function CrossCheckProvenance() {
 
         <div className={styles.chainTrack}>
           {lineageSteps.map((step, idx) => (
-            <div key={idx} className={styles.chainSegment}>
+            <div key={step.id} className={styles.chainSegment}>
               <div className={styles.stepBox}>
-                <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepName}>{step.name}</span>
                 <span className={styles.stepRole}>{step.role}</span>
               </div>
@@ -58,8 +57,8 @@ export default function CrossCheckProvenance() {
         </div>
 
         <div className={styles.provenanceGrid}>
-          {provenanceItems.map((item, idx) => (
-            <div key={idx} className={styles.provenanceItem}>
+          {provenanceItems.map((item) => (
+            <div key={item.label} className={styles.provenanceItem}>
               <span className={styles.itemKey}>{item.label}</span>
               <span className={styles.itemVal}>{item.value}</span>
             </div>

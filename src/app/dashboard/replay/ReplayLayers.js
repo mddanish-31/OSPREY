@@ -5,7 +5,7 @@ import styles from "./ReplayLayers.module.css";
 /**
  * ReplayLayers
  *
- * Spatiotemporal layer visibility control panel for #13 Incident Replay.
+ * Spatiotemporal layer visibility control panel for Incident Replay.
  *
  * Strict operational product truth:
  * - All 10 layers in "Standby / Awaiting investigation" state

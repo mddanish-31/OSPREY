@@ -55,13 +55,6 @@
   box-shadow: 0 0 6px #38bdf8;
 }
 
-.badgeNumber {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
 .badgeCategory {
   font-family: var(--font-mono);
   font-size: 0.62rem;

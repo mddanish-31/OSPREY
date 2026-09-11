@@ -6,17 +6,17 @@ import styles from "./CharacterizationPipeline.module.css";
  * CharacterizationPipeline
  *
  * 5-stage spatial characterization processing pipeline:
- * 01 Candidate Detection → 02 Geometry Extraction → 03 Geometry Validation → 04 Spatial Characterization → 05 Investigation Ready
+ * Candidate Detection → Geometry Extraction → Geometry Validation → Spatial Characterization → Investigation Ready
  *
  * Current state: All stages in "Awaiting candidate geometry".
  */
 export default function CharacterizationPipeline() {
   const stages = [
-    { num: "01", name: "Candidate Detection", desc: "Upstream SAR slick mask ingestion", state: "Awaiting candidate geometry" },
-    { num: "02", name: "Geometry Extraction", desc: "Vector polygon boundary generation", state: "Awaiting candidate geometry" },
-    { num: "03", name: "Geometry Validation", desc: "Topological coherence & ring closure", state: "Awaiting candidate geometry" },
-    { num: "04", name: "Spatial Characterization", desc: "Perimeter, area, and centroid calculation", state: "Awaiting candidate geometry" },
-    { num: "05", name: "Investigation Ready", desc: "Drift modeling handoff readiness", state: "Awaiting candidate geometry" },
+    { id: "candidate-detection", name: "Candidate Detection", desc: "Upstream SAR slick mask ingestion", state: "Awaiting candidate geometry" },
+    { id: "geometry-extraction", name: "Geometry Extraction", desc: "Vector polygon boundary generation", state: "Awaiting candidate geometry" },
+    { id: "geometry-validation", name: "Geometry Validation", desc: "Topological coherence & ring closure", state: "Awaiting candidate geometry" },
+    { id: "spatial-characterization", name: "Spatial Characterization", desc: "Perimeter, area, and centroid calculation", state: "Awaiting candidate geometry" },
+    { id: "investigation-ready", name: "Investigation Ready", desc: "Drift modeling handoff readiness", state: "Awaiting candidate geometry" },
   ];
 
   return (
@@ -34,10 +34,9 @@ export default function CharacterizationPipeline() {
 
       <div className={styles.stagesTrack}>
         {stages.map((stage, idx) => (
-          <div key={stage.num} className={styles.stageWrapper}>
+          <div key={stage.id} className={styles.stageWrapper}>
             <div className={styles.stageItem}>
               <div className={styles.stageTop}>
-                <span className={styles.stageNumber}>{stage.num}</span>
                 <span className={styles.stageStateBadge}>{stage.state}</span>
               </div>
               <h5 className={styles.stageName}>{stage.name}</h5>

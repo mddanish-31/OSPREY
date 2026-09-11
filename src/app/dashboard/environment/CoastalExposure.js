@@ -5,7 +5,7 @@ import styles from "./CoastalExposure.module.css";
 /**
  * CoastalExposure
  *
- * Coastal Vulnerability & Intersection Analysis panel for #9 Environmental Risk & Impact.
+ * Coastal Vulnerability & Intersection Analysis panel for Environmental Risk & Impact.
  * Evaluates potential shoreline contact based on projected spill movement and authoritative coastal boundaries.
  * Strict scientific product truth:
  * - Current fields initialized to truthful "Awaiting" and "Pending" states

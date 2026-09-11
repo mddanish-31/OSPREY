@@ -12,7 +12,7 @@ import styles from "./DriftOceanWorkspace.module.css";
 /**
  * DriftOceanWorkspace
  *
- * Primary orchestrator for capability #6: Drift & Ocean Dynamics.
+ * Primary orchestrator for Drift & Ocean Dynamics.
  * Assembles:
  * - DriftMapViewer (central spatial-analysis viewport with oceanic atmosphere & disabled controls)
  * - EnvironmentalForcing (CMEMS ocean current & ERA5 wind forcing context)
@@ -20,7 +20,7 @@ import styles from "./DriftOceanWorkspace.module.css";
  * - ForwardDriftProjection (forward trajectory forecasting & drift envelope panel)
  * - DriftUncertainty (stochastic trajectory ensemble & dispersion uncertainty panel)
  * - DriftPipeline (6-stage hydrodynamic reconstruction pipeline in standby)
- * - DriftProvenance (lineage from #3 AI Detection → #4 Characterization → #6 Drift)
+ * - DriftProvenance (lineage from AI Detection → Characterization → Drift)
  */
 export default function DriftOceanWorkspace() {
   const modelContext = [
@@ -38,13 +38,11 @@ export default function DriftOceanWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>06</span>
             <span className={styles.badgeCategory}>DRIFT &amp; OCEAN DYNAMICS</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Drift &amp; Ocean Dynamics</h2>
-            <span className={styles.capabilityBadge}>#6</span>
           </div>
         </div>
 
@@ -67,8 +65,8 @@ export default function DriftOceanWorkspace() {
           <span className={styles.contextBannerNotice}>Planned processing &amp; ingestion sources</span>
         </div>
         <div className={styles.contextItemsRow}>
-          {modelContext.map((item, idx) => (
-            <div key={idx} className={styles.contextItem}>
+          {modelContext.map((item) => (
+            <div key={item.label} className={styles.contextItem}>
               <span className={styles.contextLabel}>{item.label}:</span>
               <span className={styles.contextValue}>{item.value}</span>
             </div>

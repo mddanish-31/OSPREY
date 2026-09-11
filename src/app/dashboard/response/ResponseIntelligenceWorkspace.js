@@ -12,7 +12,7 @@ import styles from "./ResponseIntelligenceWorkspace.module.css";
 /**
  * ResponseIntelligenceWorkspace
  *
- * Primary orchestrator for Capability #10: Response Intelligence.
+ * Primary orchestrator for Response Intelligence.
  * Assembles:
  * - ResponsePriorityMap (operational spatial-analysis viewport for response prioritization)
  * - PriorityAssessment (6-factor multi-source operational priority evaluation)
@@ -20,16 +20,16 @@ import styles from "./ResponseIntelligenceWorkspace.module.css";
  * - MonitoringPlan (multi-sensor surveillance & iterative reassessment loop)
  * - EscalationAssessment (decision-support escalation criteria evaluation)
  * - ResponsePipeline (8-stage pipeline from investigation context to response intelligence)
- * - ResponseProvenance (7-step end-to-end lineage from #3 Detection to #10 Response)
+ * - ResponseProvenance (7-step end-to-end lineage from Detection to Response)
  */
 export default function ResponseIntelligenceWorkspace() {
   const dependencyStages = [
-    { name: "Environmental Risk" },
-    { name: "Impact Assessment" },
-    { name: "Priority Assessment" },
-    { name: "Response Planning" },
-    { name: "Monitoring" },
-    { name: "Escalation" },
+    { id: "environmental-risk", name: "Environmental Risk" },
+    { id: "impact-assessment", name: "Impact Assessment" },
+    { id: "priority-assessment", name: "Priority Assessment" },
+    { id: "response-planning", name: "Response Planning" },
+    { id: "monitoring", name: "Monitoring" },
+    { id: "escalation", name: "Escalation" },
   ];
 
   return (
@@ -39,13 +39,11 @@ export default function ResponseIntelligenceWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>10</span>
             <span className={styles.badgeCategory}>RESPONSE INTELLIGENCE</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Response Intelligence</h2>
-            <span className={styles.capabilityBadge}>#10</span>
           </div>
         </div>
 
@@ -71,7 +69,7 @@ export default function ResponseIntelligenceWorkspace() {
         </div>
         <div className={styles.dependencyTrack}>
           {dependencyStages.map((step, idx) => (
-            <div key={idx} className={styles.dependencyItem}>
+            <div key={step.id} className={styles.dependencyItem}>
               <div className={styles.stepBox}>
                 <span className={styles.stepName}>{step.name}</span>
               </div>

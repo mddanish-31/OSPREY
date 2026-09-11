@@ -13,7 +13,7 @@ import styles from "./EnvironmentalRiskWorkspace.module.css";
 /**
  * EnvironmentalRiskWorkspace
  *
- * Primary orchestrator for Capability #9: Environmental Risk & Impact.
+ * Primary orchestrator for Environmental Risk & Impact.
  * Assembles:
  * - ImpactMapViewer (primary spatial-analysis viewport for environmental exposure)
  * - CoastalExposure (coastal boundary intersection & shoreline vulnerability)
@@ -22,17 +22,17 @@ import styles from "./EnvironmentalRiskWorkspace.module.css";
  * - AffectedAreaAnalysis (spill geometry & drift envelope extent synthesis)
  * - EnvironmentalRiskAssessment (6-factor multi-source risk assessment panel)
  * - RiskPipeline (8-stage pipeline from geometry to interpretation)
- * - EnvironmentalProvenance (5-step end-to-end lineage from #3 Detection to #9 Risk)
+ * - EnvironmentalProvenance (5-step end-to-end lineage from Detection to Risk)
  */
 export default function EnvironmentalRiskWorkspace() {
   const dependencyStages = [
-    { name: "Spill Geometry" },
-    { name: "Drift Projection" },
-    { name: "Affected Area" },
-    { name: "Coastal Exposure" },
-    { name: "Sensitive Areas" },
-    { name: "Fisheries Exposure" },
-    { name: "Environmental Risk" },
+    { id: "spill-geometry", name: "Spill Geometry" },
+    { id: "drift-projection", name: "Drift Projection" },
+    { id: "affected-area", name: "Affected Area" },
+    { id: "coastal-exposure", name: "Coastal Exposure" },
+    { id: "sensitive-areas", name: "Sensitive Areas" },
+    { id: "fisheries-exposure", name: "Fisheries Exposure" },
+    { id: "environmental-risk", name: "Environmental Risk" },
   ];
 
   return (
@@ -42,13 +42,11 @@ export default function EnvironmentalRiskWorkspace() {
         <div className={styles.headerLeft}>
           <div className={styles.workspaceBadge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            <span className={styles.badgeNumber}>09</span>
             <span className={styles.badgeCategory}>ENVIRONMENTAL RISK</span>
           </div>
 
           <div className={styles.titleGroup}>
             <h2 className={styles.workspaceTitle}>Environmental Risk &amp; Impact</h2>
-            <span className={styles.capabilityBadge}>#9</span>
           </div>
         </div>
 
@@ -74,7 +72,7 @@ export default function EnvironmentalRiskWorkspace() {
         </div>
         <div className={styles.dependencyTrack}>
           {dependencyStages.map((step, idx) => (
-            <div key={idx} className={styles.dependencyItem}>
+            <div key={step.id} className={styles.dependencyItem}>
               <div className={styles.stepBox}>
                 <span className={styles.stepName}>{step.name}</span>
               </div>

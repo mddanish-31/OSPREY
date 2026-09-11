@@ -141,7 +141,6 @@ export default function DashboardTopNav({
                         }}
                         role="menuitem"
                       >
-                        <span className={styles.dropdownItemNumber}>{w.number}</span>
                         <div className={styles.dropdownItemContent}>
                           <span className={styles.dropdownItemLabel}>{w.label}</span>
                           <span className={styles.dropdownItemDesc}>{w.description}</span>
@@ -164,7 +163,6 @@ export default function DashboardTopNav({
                       }}
                       role="menuitem"
                     >
-                      <span className={styles.dropdownItemNumber}>08</span>
                       <div className={styles.dropdownItemContent}>
                         <span className={styles.dropdownItemLabel}>Investigation Copilot</span>
                         <span className={styles.dropdownItemDesc}>
@@ -181,7 +179,6 @@ export default function DashboardTopNav({
                       }}
                       role="menuitem"
                     >
-                      <span className={styles.dropdownItemNumber}>06</span>
                       <div className={styles.dropdownItemContent}>
                         <span className={styles.dropdownItemLabel}>Explainable Attribution</span>
                         <span className={styles.dropdownItemDesc}>

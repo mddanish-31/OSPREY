@@ -5,7 +5,7 @@ import styles from "./ReplayMapViewer.module.css";
 /**
  * ReplayMapViewer
  *
- * Primary geographic investigation replay canvas for #13 Incident Replay.
+ * Primary geographic investigation replay canvas for Incident Replay.
  *
  * Strict scientific & operational product truth:
  * - Clean neutral geographic frame with reticles and oceanic atmospheric depth

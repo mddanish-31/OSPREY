@@ -180,15 +180,8 @@
 .nodeTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.35rem;
-}
-
-.nodeNum {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #38bdf8;
 }
 
 .nodeStateBadge {

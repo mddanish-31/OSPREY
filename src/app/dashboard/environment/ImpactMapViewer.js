@@ -5,11 +5,11 @@ import styles from "./ImpactMapViewer.module.css";
 /**
  * ImpactMapViewer
  *
- * Central spatial-analysis viewport for #9 Environmental Risk & Impact.
- * Conforms strictly to scientific product truth:
+ * Central spatial-analysis viewport for Environmental Risk & Impact.
+ * Strict scientific product truth:
  * - Pure data-ready "Awaiting Spill Projection" state
- * - Zero fabricated coastlines, marine reserves, fisheries zones, ports, spill polygons, heatmaps, or fake coordinates
- * - Action controls disabled with descriptive tooltips
+ * - Zero fabricated risk heatmaps, ecological layers, fake coastlines, or synthetic contours
+ * - Action controls disabled with clear tooltip descriptions
  */
 export default function ImpactMapViewer() {
   return (

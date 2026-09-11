@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { listInvestigations, getInvestigation } from "@/lib/api/investigations";
 import DashboardTopNav from "./DashboardTopNav";
 import DashboardAccessRail from "./DashboardAccessRail";
 import DashboardWorkspace from "./DashboardWorkspace";
@@ -17,12 +18,110 @@ import styles from "./DashboardShell.module.css";
  * - Central primary investigation workspace
  * - Contextual capability drawer
  * - AI Copilot assistant drawer
+ * - Shared Investigation domain context across workspaces
  */
 export default function DashboardShell() {
   const [activeWorkspace, setActiveWorkspace] = useState("overview");
   const [activeCapability, setActiveCapability] = useState("investigation-overview");
   const [isContextOpen, setIsContextOpen] = useState(false);
   const [isCopilotOpen, setIsCopilotOpen] = useState(false);
+
+  // Shared investigation state across workspaces
+  const [investigations, setInvestigations] = useState([]);
+  const [selectedInvestigationId, setSelectedInvestigationId] = useState(null);
+  const [selectedInvestigation, setSelectedInvestigation] = useState(null);
+  const [isLoadingInvestigations, setIsLoadingInvestigations] = useState(true);
+  const [investigationsError, setInvestigationsError] = useState(null);
+
+  // Initial load of investigations on shell mount
+  useEffect(() => {
+    let isMounted = true;
+
+    listInvestigations({ page: 1, pageSize: 50 })
+      .then((response) => {
+        if (!isMounted) return;
+        const items = response?.items || [];
+        setInvestigations(items);
+        if (items.length > 0) {
+          setSelectedInvestigationId(items[0].id);
+          setSelectedInvestigation(items[0]);
+        } else {
+          setSelectedInvestigationId(null);
+          setSelectedInvestigation(null);
+        }
+        setInvestigationsError(null);
+      })
+      .catch((err) => {
+        if (!isMounted) return;
+        setInvestigationsError(err.message || "Failed to load investigations from OSPREY backend");
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoadingInvestigations(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Refresh investigations list
+  const handleRefreshInvestigations = useCallback(async (autoSelectId = null) => {
+    setIsLoadingInvestigations(true);
+    setInvestigationsError(null);
+
+    try {
+      const response = await listInvestigations({ page: 1, pageSize: 50 });
+      const items = response?.items || [];
+      setInvestigations(items);
+
+      if (items.length > 0) {
+        const targetId =
+          autoSelectId ||
+          (items.some((i) => i.id === selectedInvestigationId)
+            ? selectedInvestigationId
+            : items[0].id);
+        setSelectedInvestigationId(targetId);
+        const activeObj = items.find((i) => i.id === targetId) || items[0];
+        setSelectedInvestigation(activeObj);
+      } else {
+        setSelectedInvestigationId(null);
+        setSelectedInvestigation(null);
+      }
+    } catch (err) {
+      setInvestigationsError(err.message || "Failed to load investigations from OSPREY backend");
+    } finally {
+      setIsLoadingInvestigations(false);
+    }
+  }, [selectedInvestigationId]);
+
+  // Handle selecting an investigation
+  const handleSelectInvestigation = useCallback(
+    async (id) => {
+      if (!id) {
+        setSelectedInvestigationId(null);
+        setSelectedInvestigation(null);
+        return;
+      }
+
+      setSelectedInvestigationId(id);
+      const existing = investigations.find((i) => i.id === id);
+      if (existing) {
+        setSelectedInvestigation(existing);
+      }
+
+      try {
+        const fullDetails = await getInvestigation(id);
+        if (fullDetails) {
+          setSelectedInvestigation(fullDetails);
+        }
+      } catch {
+        // Fallback to existing list item
+      }
+    },
+    [investigations]
+  );
 
   // Switch workspace
   const handleSelectWorkspace = useCallback((workspaceId) => {
@@ -103,6 +202,13 @@ export default function DashboardShell() {
           activeWorkspace={activeWorkspace}
           activeCapability={activeCapability}
           onSelectWorkspace={handleSelectWorkspace}
+          investigations={investigations}
+          selectedInvestigation={selectedInvestigation}
+          selectedInvestigationId={selectedInvestigationId}
+          isLoadingInvestigations={isLoadingInvestigations}
+          investigationsError={investigationsError}
+          onSelectInvestigation={handleSelectInvestigation}
+          onRefreshInvestigations={handleRefreshInvestigations}
         />
       </div>
 

@@ -7,7 +7,7 @@ import styles from "./CopilotConversation.module.css";
 /**
  * CopilotConversation
  *
- * Primary conversation and grounded response shell for #11 AI Copilot.
+ * Primary conversation and grounded response shell for AI Copilot.
  * Operates across both dedicated workspace and floating drawer contexts.
  * Strict scientific & operational product truth:
  * - Pure data-ready standby state awaiting active investigation
